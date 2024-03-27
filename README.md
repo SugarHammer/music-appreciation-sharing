@@ -41,11 +41,11 @@ SpringBoot+Mybatis+layui+Mysql
 ### 项目支持
 - 项目的发展，离不开大家得支持~！~
 - 也可以请作者喝一杯咖啡:)
-![输入图片说明](photo/0-%E5%BE%AE%E4%BF%A1.png)
-![输入图片说明](photo/0-%E6%94%AF%E4%BB%98%E5%AE%9D.png)
+![输入图片说明](photo/0-%E5%BE%AE%E4%BF%A1_2.png)
+![输入图片说明](photo/0-%E6%94%AF%E4%BB%98%E5%AE%9D_2.png)
 
 ## 有项目修改、安装调试需求 请联系微信
-![输入图片说明](photo/0-WeChat.jpg)
+![输入图片说明](photo/0-WeChat.png)
 
 ## 其他项目定制加微☝☝☝
 
