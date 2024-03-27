@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .centermenusdiv {
+            position: relative;
+            width: 120px;
+        }
+        .centermenusdiv ul {
+            position: absolute;
+            padding: 0px;
+            margin: 0px;
+        }
+        .centermenusdiv ul li{
+            list-style: none;
+        }
+        .centermenusdiv ul li a{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="topapp">
+
+    <nav class="mobile-menu">
+        <div class="inner">
+            <div class="mobile-search">
+                <h6>Type movie or tv show name to find it</h6>
+                <form>
+                    <input type="search" placeholder="Search here">
+                    <input type="submit" value="FIND">
+                </form>
+            </div>
+            <!-- end mobile-search -->
+            <a v-if="sessionmember.tname==''" href="login.html" class="button-account"><i class="lni lni-user"></i> 注册 </a>
+            <a v-if="sessionmember.tname==''" href="register.html" class="button-account" style="margin-left: 10px;"><i class="lni lni-user"></i> 登录 </a>
+
+
+            <!-- end button-account -->
+            <div class="site-menu">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+<!--                    <li><a href="newslist.html">新闻资讯</a></li>-->
+                    <li><a href="movielist.html">歌曲</a></li>
+                    <li><a href="articlelist.html">交流中心</a></li>
+                    <li><a href="messagelist.html">在线留言</a></li>
+                </ul>
+            </div>
+            <!-- end site-menu -->
+        </div>
+        <!-- end inner -->
+    </nav>
+
+
+    <nav class="navbar" style="position: relative;height: 100px;">
+        <div class="logo"><a href="index.html"> <img src="images/logo.png" alt="Image"> </a></div>
+        <!-- end logo -->
+        <div class="site-menu">
+            <ul>
+                <li><a href="index.html">首页</a></li>
+<!--                <li><a href="newslist.html">新闻资讯</a></li>-->
+                <li><a href="movielist.html">音乐库</a></li>
+                <li><a href="phb.html">音乐榜单</a></li>
+                <li><a href="articlelist.html">交流中心</a></li>
+                <li v-if="sessionmember.tname!=''"><a href="love.html">猜你喜欢</a></li>
+                <li><a href="messagelist.html">在线留言</a></li>
+
+            </ul>
+        </div>
+        <!-- end site-menu -->
+        <div class="user-menu" style="height:100px">
+            <div class="navbar-search"><i class="lni lni-search-alt"></i></div>
+            <!-- end navbar-search -->
+            <!--<div class="navbar-notify"><i class="lni lni-alarm"></i><b>2</b>-->
+                <!--<div class="notify-dropdown">-->
+                    <!--<div class="total-notify">-->
+                        <!--<h6>Notification</h6>-->
+                        <!--<span>3</span></div>-->
+                    <!--&lt;!&ndash; end total-notify &ndash;&gt;-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<p><u>Marcus</u> download 2000+ Simple Line Icons and Explore</p>-->
+                            <!--<span>2 Days</span></li>-->
+                        <!--<li>-->
+                            <!--<p>Added new movie <u>Afterlife</u> Cheatsheet to Start Using With Your Projects.</p>-->
+                            <!--<span>3 Days</span></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; end notify-dropdown &ndash;&gt;-->
+            <!--</div>-->
+            <!-- end navbar-notify -->
+            <div class="navbar-account" style="height: 100px;">
+                <!--<a href="account.html">注册 <i class="lni lni-user"></i> </a>-->
+                <a v-if="sessionmember.tname==''" href="login.html">登录 </a>
+                <a v-if="sessionmember.tname==''" href="register.html" style="margin-left: 10px;">注册 </a>
+                <a v-if="sessionmember.tname==''" href="forget.html" style="margin-left: 10px;">找回密码 </a>
+                <a v-if="sessionmember.tname!=''" href="#" style="margin-left: 10px;"> {{sessionmember.tname}}  你好！ </a>
+
+
+                <div v-show="sessionmember.tname!=''" class="centermenusdiv" onMouseOver="this.lastChild.style.visibility='visible'" onMouseOut="this.lastChild.style.visibility='hidden'">
+                    <a v-if="sessionmember.tname!=''" href="javascript:;"><i class="lni lni-user"></i> </a>
+                    <ul   style="visibility:hidden">
+                        <li>
+                            <a href="myuploadlist.html"  style="margin-left: 10px; font-size: 2px"><i class="layui-icon">&#xe62f;</i>我的上传</a>
+                        </li>
+                        <li>
+                            <a href="collectlist.html"  style="margin-left: 10px; font-size: 2px"><i class="layui-icon">&#xe637;</i>我的歌单</a>
+                        </li>
+                        <li>
+                            <a href="orderlist.html"  style="margin-left: 10px;font-size: 2px"><i class="layui-icon">&#xe63c;</i>我的订单</a>
+                        </li>
+                        <li>
+                            <i class="layui-icon">&#xe770;</i>
+                            <a href="memberedit.html" style="margin-left: 10px;font-size: 2px">个人信息</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" @click="logout" style="margin-left: 10px;font-size: 2px"><i class="layui-icon">&#x1007;</i>退出&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- end navbar-account -->
+        </div>
+        <!-- end user-menu -->
+        <div class="hamburger-menu">
+            <button class="hamburger">
+                <svg width="45" height="45" viewBox="0 0 100 100">
+                    <path class="line line1"
+                          d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>
+                    <path class="line line2" d="M 20,50 H 80"/>
+                    <path class="line line3"
+                          d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>
+                </svg>
+            </button>
+        </div>
+        <!-- end hamburger-menu -->
+    </nav>
+
+
+    <section class="search-box">
+        <div class="container">
+            <h6>输入歌曲名或歌手称搜索</h6>
+            <form action="movielist.html">
+                <input type="search" v-model="key" name="key" placeholder="歌曲名或歌手">
+                <input type="submit" value="搜索">
+            </form>
+            <!--<ul>-->
+                <!--<li><a href="#">Pulp Function</a></li>-->
+                <!--<li><a href="#">Henry Porter</a></li>-->
+                <!--<li><a href="#">The Racer</a></li>-->
+            <!--</ul>-->
+        </div>
+        <!-- end container -->
+    </section>
+
+</div>
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript">
+    var qs = Qs
+    var topvmm = new Vue({
+        el:"#topapp",
+        data:{
+            sessionmember:{
+                tname:"",
+            },
+            key:"",
+        },
+        mounted(){
+            this.getsessionmember()
+        },
+        methods:{
+            getsessionmember(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if (response.data.data == 200) {
+                        this.sessionmember = response.data.sessionmember
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            logout(){
+                axios.post('memberExit', qs.stringify({
+                })).then(response => {
+                    location.replace("index.html")
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+
+        }
+    })
+</script>
+
+
+</body>
+</html>

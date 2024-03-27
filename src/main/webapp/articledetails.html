@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <!--<link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">-->
+    <!--<link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">-->
+    <!--<link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">-->
+    <!--<link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">-->
+    <!--<link href="ico/favicon.png" rel="shortcut icon">-->
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
+
+    <link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
+    <script charset="utf-8" src="kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+    </script>
+    <script>
+        KindEditor.ready(function(K) {
+            K.create('textarea[name="note"]', {
+                uploadJson : 'kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : 'kindeditor/jsp/file_manager_json.jsp',
+                allowFileManager : true,
+                allowImageUpload : true,
+                autoHeightMode : true,
+                afterCreate : function() {this.loadPlugin('autoheight');},
+                afterBlur : function(){ this.sync(); }  //Kindeditor下获取文本框信息
+            });
+        });
+    </script>
+
+
+
+</head>
+<body>
+
+<div id="iframetop">
+</div>
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center"></h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+    <section class="content-section">
+        <div class="container" id="app">
+            <div >
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4>交流中心</h4>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!--论坛-->
+                <div style="padding:0px 30px;">
+
+                    <!--论坛-->
+                    <div class="layui-container" style="border: 1px solid #B8B8B8;width: auto;">
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md12 content detail">
+                                <div class="fly-panel detail-box">
+                                    <h1>{{article.title}}</h1>
+                                    <div class="fly-detail-info">
+                                        <span v-if="article.isjh=='yes'" class="layui-badge layui-bg-red">精帖</span>
+                                        <div class="fly-admin-box" data-id="123">
+                                        </div>
+                                        <span class="fly-list-nums">
+                                                        <i class="layui-icon" title="点赞" @click="dz(article.id)">&#xe6c6;</i>{{article.dznum}}
+                                            <!--<i class="iconfont" title="点赞" @click="zd(article.id)">&#xe641;</i> {{article.zdnum}}-->
+                                                        <i class="iconfont" title="评论">&#xe60c;</i> {{replylist.length}}
+                                                        <i class="iconfont" title="人气">&#xe60b;</i> {{article.lookcs}}
+                                                 </span>
+                                    </div>
+                                    <div class="detail-about" style="margin-top: 20px;">
+                                        <a class="fly-avatar" href="#">
+                                            <img :src="['upload/'+article.member.filename]"
+                                                 alt="article.member.tname">
+                                        </a>
+                                        <div class="fly-detail-user">
+                                            <a href="#" class="fly-link">
+                                                <cite>{{article.member.tname}}</cite>
+                                                <i class="iconfont icon-renzheng" title="实名认证"></i>
+                                            </a>
+                                            <span>{{article.savetime}}</span>
+
+                                        </div>
+                                        <div class="detail-hits" id="LAY_jieAdmin" data-id="123">
+                                                <span type="edit">
+                                                    相关歌曲:<a :href="['moviedetails.html?id='+article.movie.id]"><b>《{{article.movie.name}}》</b></a>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="detail-body photos">
+                                        <p>{{article.content}}</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="fly-panel detail-box" id="flyReply"
+                                     style="border:0px solid red;padding-left: 10px;">
+                                    <fieldset class="layui-elem-field layui-field-title"
+                                              style="text-align: center;">
+                                        <legend>评论</legend>
+                                    </fieldset>
+
+                                    <ul class="jieda" id="jieda">
+
+                                        <li v-for="(reply,i) in replylist" data-id="111" class="jieda-daan">
+                                            <a name="item-1111111111"></a>
+                                            <div class="detail-about detail-about-reply">
+                                                <a class="fly-avatar" href="">
+                                                    <img :src="['upload/'+reply.member.filename]" alt=" ">
+                                                </a>
+                                                <div class="fly-detail-user">
+                                                    <a href="#}" class="fly-link">
+                                                        <cite>{{reply.member.tname}}</cite>
+                                                        <i class="iconfont icon-renzheng" title="认证信息：XXX"></i>
+                                                    </a>
+                                                </div>
+
+                                                <div class="detail-hits">
+                                                    <span>{{reply.savetime}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="detail-body jieda-body photos">
+                                                <p>{{reply.content}}</p>
+                                            </div>
+                                        </li>
+
+                                        <!-- 无数据时 -->
+                                        <!-- <li class="fly-none">消灭零回复</li> -->
+                                    </ul>
+                                    <div id="demo1" style="text-align: center"></div>
+
+
+                                    <div class="layui-form layui-form-pane" style="padding-left: 30px;">
+                                        <div class="layui-form-item layui-form-text">
+                                            <a name="comment"></a>
+                                            <div class="layui-input-block">
+                                        <textarea id="editor_id"  v-model="content" class="form-control"
+                                                  style="height: 150px;width: 100%"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <a class="layui-btn" @click="add()" style="color:white">提交回复</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--论坛-->
+
+                </div>
+
+
+                <!--论坛-->
+
+                <!-- end col-12 -->
+                <!-- end col-2 -->
+
+
+
+            </div>
+
+        </div>
+        <!-- end container -->
+    </section>
+    <footer class="footer">
+        <!-- end container -->
+        <div class="bottom-bar" id="iframefoot">
+            <!-- end container -->
+        </div>
+        <!-- end bottom-bar -->
+    </footer>
+    <!-- end footer -->
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+    var qs = Qs
+    var id = UrlParam.paramValues("id") == undefined ? '' : UrlParam.paramValues("id").toString()
+    var vmm = new Vue({
+        el: "#app",
+        data: {
+            id: id,
+            article: {
+                member: "",
+            },
+            content: "",
+            replylist: [],
+            keyword: "",
+            pageSize: 10,
+        },
+        mounted() {
+            this.show()
+            this.getreplylist()
+            layui.use(['form'], function () {
+                var form = layui.form
+            })
+        },
+        methods: {
+            sousuo() {
+                location.replace("doctorlist.html?keyword=" + this.keyword)
+            },
+
+            add() {
+                axios.post('checkmember', qs.stringify({})).then(response => {
+                    if (response.data.data == 200) {
+                    // this.content = window.editor.html()
+                    if (this.content == "") {
+                        layer.msg("回复内容不能为空", {icon: 5})
+                        return false;
+                    }
+                    axios.post('replyAdd', qs.stringify({
+                        content: this.content,
+                        articleid: this.id
+                    })).then(response => {
+                        layer.msg("操作成功", {icon: 6})
+                    this.getreplylist()
+                }).catch(error => {
+                        console.log(error)
+                })
+
+                } else {
+                    location.replace("login.html")
+                }
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+
+            show() {
+                axios.post('articleDetails', qs.stringify({
+                    id: this.id,
+                })).then(response => {
+                    this.article = response.data.article
+                console.log(this.article)
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+
+            dz(id) {
+                axios.post('articleDZ', qs.stringify({
+                    id: id,
+                })).then(response => {
+                    this.article.dznum = response.data.dznum
+                layer.msg("点赞成功!", {icon: 6})
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+
+            gz(tmemberid){
+                axios.post('fansAdd', qs.stringify({
+                    tmemberid: tmemberid,
+                })).then(response => {
+                    if(response.data.data == 200){
+                    layer.msg("关注成功!", {icon: 6})
+                }else if(response.data.data == 400){
+                    layer.msg("你已关注过TA!", {icon: 5})
+                }else if(response.data.data == -2){
+                    layer.msg("不能关注自己!", {icon: 5})
+                }else{
+                    layer.msg("请先登录!!", {icon: 5})
+                }
+
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+            getreplylist() {
+                axios.post('admin/replyList', qs.stringify({
+                    articleid: this.id,
+                    pageSize: this.pageSize
+                })).then(response => {
+                    layui.use(['laypage', 'layer'], function () {
+                    var laypage = layui.laypage
+                        , layer = layui.layer;
+                    //总页数大于页码总数
+                    laypage.render({
+                        elem: 'demo1'
+                        , limit: vmm.pageSize
+                        , count: response.data.list.length //数据总数
+                        , jump: function (obj, first) {
+                            vmm.current_page(obj.curr, vmm.pageSize)
+                            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                        }
+                    });
+                });
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+
+            current_page(page, pageSize) {
+                axios.post('admin/replyList', qs.stringify({
+                    articleid: this.id,
+                    pageNum: page,
+                    pageSize: pageSize,
+                })).then(response => {
+                    this.replylist = response.data.pageInfo.list
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+
+        }
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>

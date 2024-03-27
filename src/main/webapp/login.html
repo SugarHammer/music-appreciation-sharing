@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .submitbtn{
+            height: 70px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #e90101;
+            border: none;
+            padding: 0 50px;
+            width: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="iframetop">
+
+    <!--<nav class="mobile-menu">-->
+        <!--<div class="inner">-->
+            <!--<div class="mobile-search">-->
+                <!--<h6>Type movie or tv show name to find it</h6>-->
+                <!--<form>-->
+                    <!--<input type="search" placeholder="Search here">-->
+                    <!--<input type="submit" value="FIND">-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end mobile-search &ndash;&gt;-->
+            <!--<a href="account.html" class="button-account"><i class="lni lni-user"></i> ACCOUNT </a>-->
+            <!--&lt;!&ndash; end button-account &ndash;&gt;-->
+            <!--<div class="site-menu">-->
+                <!--<ul>-->
+                    <!--<li><a href="index.html">HOME</a></li>-->
+                    <!--<li><a href="movies.html">MOVIES</a></li>-->
+                    <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+                    <!--<li><a href="tips.html">TIPS</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end inner &ndash;&gt;-->
+    <!--</nav>-->
+
+    <!--<nav class="navbar">-->
+        <!--<div class="logo"><a href="index.html"> <img src="images/logo.png" alt="Image"> </a></div>-->
+        <!--&lt;!&ndash; end logo &ndash;&gt;-->
+        <!--<div class="site-menu">-->
+            <!--<ul>-->
+                <!--<li><a href="index.html">HOME</a></li>-->
+                <!--<li><a href="movies.html">MOVIES</a></li>-->
+                <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+                <!--<li><a href="tips.html">TIPS</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+        <!--<div class="user-menu">-->
+            <!--<div class="navbar-search"><i class="lni lni-search-alt"></i></div>-->
+            <!--&lt;!&ndash; end navbar-search &ndash;&gt;-->
+            <!--<div class="navbar-notify"><i class="lni lni-alarm"></i><b>2</b>-->
+                <!--<div class="notify-dropdown">-->
+                    <!--<div class="total-notify">-->
+                        <!--<h6>Notification</h6>-->
+                        <!--<span>3</span></div>-->
+                    <!--&lt;!&ndash; end total-notify &ndash;&gt;-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<p><u>Marcus</u> download 2000+ Simple Line Icons and Explore</p>-->
+                            <!--<span>2 Days</span></li>-->
+                        <!--<li>-->
+                            <!--<p>Added new movie <u>Afterlife</u> Cheatsheet to Start Using With Your Projects.</p>-->
+                            <!--<span>3 Days</span></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; end notify-dropdown &ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end navbar-notify &ndash;&gt;-->
+            <!--<div class="navbar-account"><a href="account.html">ACCOUNT <i class="lni lni-user"></i> </a></div>-->
+            <!--&lt;!&ndash; end navbar-account &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end user-menu &ndash;&gt;-->
+        <!--<div class="hamburger-menu">-->
+            <!--<button class="hamburger">-->
+                <!--<svg width="45" height="45" viewBox="0 0 100 100">-->
+                    <!--<path class="line line1"-->
+                          <!--d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>-->
+                    <!--<path class="line line2" d="M 20,50 H 80"/>-->
+                    <!--<path class="line line3"-->
+                          <!--d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>-->
+                <!--</svg>-->
+            <!--</button>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end hamburger-menu &ndash;&gt;-->
+    <!--</nav>-->
+
+
+</div>
+<!-- end mobile-menu -->
+<!-- end navbar -->
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center">登录</h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+
+    <section class="content-section" data-background="images/section-pattern01.png">
+        <div class="container" id="app">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="membership">
+                        <h6>登录</h6>
+                        <p>请在下方填写登录信息
+                        </p>
+                        <form>
+
+
+
+                            <div class="form-group">
+                                <input type="text" v-model="member.uname" placeholder="用户名">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" v-model="member.upass" placeholder="密码">
+                            </div>
+
+
+                            <div class="form-group">
+                                <a class="submitbtn" @click="add" style="cursor: pointer" >提交</a>
+                            </div>
+
+                            <div class="or">
+                                <span>or</span>
+                                <p>如果您没有登录帐号请点击下方链接登录</p>
+                                <a href="register.html" style="width: 100%">
+                                    <small>注册</small>
+                                </a>
+                            </a>
+                            </div>
+                            <!-- end or -->
+                        </form>
+                    </div>
+                    <!-- end membership -->
+                </div>
+                <!-- end col-7 -->
+                <div class="col-lg-5">
+                    <figure class="side-image">
+                        <img src="images/side-image02.png" alt="Image">
+                    </figure>
+                    <!-- end side-image -->
+                </div>
+                <!-- end col-5 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="bottom-bar" id="iframefoot">
+        </div>
+    </footer>
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+    var qs = Qs
+    var vmm = new Vue({
+        el:"#app",
+        data:{
+            member:{
+                uname: "",
+                upass: "",
+            },
+        },
+        methods:{
+            add() {
+                if (this.member.uname == "") {
+                    layer.msg("用户名不能为空", {icon: 5})
+                    return false;
+                }
+                if (this.member.upass == "") {
+                    layer.msg("密码不能为空", {icon: 5})
+                    return false;
+                }
+
+
+                axios.post('Login', qs.stringify({
+                    uname: this.member.uname,
+                    upass: this.member.upass,
+                })).then(response => {
+                    if (response.data.data == 200) {
+                        location.replace("index.html")
+                    } else{
+                        layer.msg("用户名或密码错误", {icon: 5})
+                        this.member.uname = ""
+                        this.member.upass = ""
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+        }
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Bootstrap Themes" />
+    <meta name="author" content="" />
+    <link rel="icon " href="images/音乐图标2.ico">
+
+    <title>音乐播放器</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="player/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="player/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="player/css/lightbox.css">
+	
+	 <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	<link href="player/css/flipclock.css" rel="stylesheet" />
+	
+	
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="player/js/html5shiv.js"></script>
+        <script src="player/js/respond.min.js"></script>
+    <![endif]-->
+<style type="text/css">  
+
+*{ margin:0px; padding:0px;}  
+
+#nav{ width:100%; height:100%; margin:0 auto;}  
+
+#nav ul{ list-style:none;}  
+
+#nav ul li{ float:left; line-height:40px; text-align:center; position:relative;}  
+
+#nav ul li a{ text-decoration:none; color:#FFF; display:block;padding:0px 20px;}  
+
+#nav ul li a:hover{ color:#FF0000; background:transparent}  
+
+#nav ul li ul{ position:absolute; display:none;}
+
+#nav ul li ul li{ float:none; line-height:20px; text-align:left;}  
+
+#nav ul li ul li a{ width:100%;}  
+
+#nav ul li ul li a:hover{ background-color:#fff;}  
+
+#nav ul li:hover ul{ display:block}  
+
+</style> 
+</head>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<body>
+
+
+
+
+	<div class="gradient-line clearfix">
+		<div style="background: none repeat scroll 0% 0% #F69087;"></div>
+		<div style="background: none repeat scroll 0% 0% #85CCB1;"></div>
+		<div style="background: none repeat scroll 0% 0% #966b20;"></div>
+		<div style="background: none repeat scroll 0% 0% #85A9B3;"></div>
+		<div style="background: none repeat scroll 0% 0% #B0CB7A;"></div>
+	</div>
+	
+	<!-- /////////////////////////////////////////Content -->
+	<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>音乐播放器</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="player/fonts/iconfont.css">
+<link rel="stylesheet" type="text/css" media="screen" href="player/css/reset.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="player/css/player.css" />
+	<script>
+        var sheetid = UrlParam.paramValues("sheetid").toString()
+        cs = sheetid
+	</script>
+</head>
+<body>
+
+<!-- 播放器 -->
+<div class="music-player">
+	<!-- audio标签 -->
+	<audio class="music-player__audio" ></audio>
+	<!-- 播放器主体 -->
+	<div class="music-player__main">
+		<!-- 模糊背景 -->
+		<div class="music-player__blur"></div>
+		<!-- 唱片 -->
+		<div class="music-player__disc">
+			<!-- 唱片图片 -->
+			<div class="music-player__image">
+				<img width="100%" src="" alt="">
+			</div>
+			<!-- 指针 -->
+			<div class="music-player__pointer"><img width="100%" src="./images/cd_tou.png" alt=""></div>
+		</div>
+		<!-- 控件主体 -->
+		<div class="music-player__controls">
+			<!-- 歌曲信息 -->
+			<div class="music__info">
+				<h3 class="music__info--title">...</h3>
+				<p class="music__info--singer">...</p>
+			</div>
+			<!-- 控件... -->
+			<div class="player-control">
+				<div class="player-control__content">
+					<div class="player-control__btns">
+						<div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+						<div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+						<div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+						<div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+					</div>
+					<div class="player-control__volume">
+						<div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+						<div class="control__volume--progress progress"></div>
+					</div>
+				</div>
+
+				<!-- 歌曲播放进度 -->
+				<div class="player-control__content">
+					<div class="player__song--progress progress"></div>
+					<div class="player__song--timeProgess nowTime">00:00</div>
+					<div class="player__song--timeProgess totalTime">00:00</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<!-- 歌曲列表 -->
+	<div class="music-player__list">
+		<ul class="music__list_content">
+			<!-- <li class="music__list__item play">123</li>
+			<li class="music__list__item">123</li>
+			<li class="music__list__item">123</li> -->
+		</ul>
+	</div>
+</div>
+
+<script src="player/js/utill.js"></script>
+<script src="player/js/jquery.min.js"></script>
+<script src="player/js/player.js"></script>
+
+<div style="text-align:center;margin:-100px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#ffffff">
+</div>
+</body>
+</html>
+
+	<div class="gradient-line clearfix">
+		<div style="background: none repeat scroll 0% 0% #F69087;"></div>
+		<div style="background: none repeat scroll 0% 0% #85CCB1;"></div>
+		<div style="background: none repeat scroll 0% 0% #966b20;"></div>
+		<div style="background: none repeat scroll 0% 0% #85A9B3;"></div>
+		<div style="background: none repeat scroll 0% 0% #B0CB7A;"></div>
+	</div>
+
+
+
+
+<!-- jQuery -->
+<script src="player/js/jquery-1.11.3.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="player/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="player/js/agency.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="player/js/jquery.easing.min.js"></script>
+<script src="player/js/classie.js"></script>
+<script src="player/js/cbpAnimatedHeader.js"></script>
+
+<!-- Countdown -->
+    <script src="player/js/flipclock.js"></script>
+    <script type="text/javascript">
+		var clock;
+		
+		$(document).ready(function() {
+			var clock;
+
+			clock = $('.clock').FlipClock({
+		        clockFace: 'DailyCounter',
+		        autoStart: false,
+		        callbacks: {
+		        	stop: function() {
+		        		$('.message').html('The clock has stopped!')
+		        	}
+		        }
+		    });
+				    
+		    clock.setTime(220880);
+		    clock.setCountdown(true);
+		    clock.start();
+
+		});
+	</script>
+
+ <script src="player/js/lightbox-plus-jquery.min.js"></script>
+</body>
+
+</html>

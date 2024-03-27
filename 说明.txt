@@ -1,0 +1,6 @@
+http://localhost:8088/vuemusicshareptboot/index.html
+
+http://localhost:8088/vuemusicshareptboot/admin/login.html
+
+H001  123
+admin  123

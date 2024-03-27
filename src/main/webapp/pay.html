@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<div style="padding: 20px;" id="app">
+    <form class="layui-form">
+        <div class="layui-form-item">
+            支付 {{fee}} 元
+        </div>
+        <div class="layui-form-item">
+            <input type="text" v-model="zfb" required lay-verify="required" placeholder="支付帐号" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <input type="password" v-model="mm" required lay-verify="required" placeholder="支付密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+        <div class="layui-form-item">
+            <a class="layui-btn" lay-submit  @click="add()">确认支付</a>
+        </div>
+
+    </form>
+</div>
+</body>
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript">
+    var qs = Qs
+    var movieid = UrlParam.paramValues("movieid").toString()
+    var fee = UrlParam.paramValues("fee").toString()
+    var vmm = new Vue({
+        el: '#app',
+        data: {
+            zfb:'',
+            mm:'',
+            movieid:movieid,
+            fee:fee,
+        },
+        mounted() {
+            layui.use(['form', 'layer', 'upload'], function () {
+                    $ = layui.jquery;
+                    var form = layui.form
+                        , layer = layui.layer
+                        , upload = layui.upload;
+            })
+        },
+        methods: {
+
+
+            add(){
+                if (this.zfb == "") {
+                    layer.msg("输入支付帐号", {icon: 5})
+                    return false;
+                }
+                if (this.mm == "") {
+                    layer.msg("输入支付帐号", {icon: 5})
+                    return false;
+                }
+                axios.post('ddinfoAdd', qs.stringify({
+                    sheetid: this.sheetid,
+                    movieid:movieid,
+                    fee:fee,
+                })).then(response => {
+                    if(response.data.data==200)
+                {
+                    layer.alert("购买成功！", {icon: 6}, function () {
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index)
+                        parent.vmm.getaddresslist()
+                    })
+                }else{
+                    layer.msg("该歌曲已购买过！",{icon:5})
+                }
+
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+
+        }
+    });
+</script>
+</html>

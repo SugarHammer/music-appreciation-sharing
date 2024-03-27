@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+<body>
+
+<div id="iframetop">
+
+    <!--<nav class="mobile-menu">-->
+
+</div>
+<!-- end mobile-menu -->
+<!-- end navbar -->
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center">新闻资讯</h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+
+    <section class="content-section" data-background="images/section-pattern01.png">
+        <div class="container" id="app">
+            <div v-for="news in newslist"  class="row align-items-center"  style="margin-bottom: 20px;align-items: normal !important">
+                <div class="col-lg-4">
+                    <img :src="['upload/'+news.filename]" style="width: 100%;height: 100%">
+                </div>
+                <div class="col-lg-8" style="margin: 0px;padding: 0px;">
+                   <h5><a :href="['newsdetails.html?id='+news.id]">{{news.title}}</a></h5>
+                    <small>{{news.savetime}}</small>
+                    <p v-html="news.content" style="display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 5;overflow: hidden;"></p>
+                </div>
+            </div>
+
+            <div id="demo1" style="text-align: center"></div>
+
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="bottom-bar" id="iframefoot">
+        </div>
+    </footer>
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+
+
+    var qs = Qs
+    var pageNum = UrlParam.paramValues("pageNum")==null?1:UrlParam.paramValues("pageNum").toString()
+
+    var vmm=new Vue({
+        el:'#app',
+        data:{
+            newslist:[],
+            pageSize:10,
+            pageNum:pageNum,
+        },
+        mounted(){
+            this.getnewslist()
+        },
+        methods: {
+
+
+            getnewslist() {
+                axios.post('admin/newsList',qs.stringify({
+                    pageSize:this.pageSize
+                })).then(response =>{
+                    layui.use(['laypage', 'layer'], function(){
+                        var laypage = layui.laypage
+                            ,layer = layui.layer;
+                        //总页数大于页码总数
+                        laypage.render({
+                            elem: 'demo1'
+                            ,theme:"#2b303a"
+                            ,limit:vmm.pageSize
+                            ,curr:vmm.pageNum
+                            ,count: response.data.list.length //数据总数
+                            ,jump: function(obj,first){
+                                vmm.pageNum = obj.curr
+                                vmm.current_page(obj.curr,vmm.pageSize)
+                                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            }
+                        });
+                    });
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+
+            current_page(page,pageSize){
+                axios.post('admin/newsList',qs.stringify({
+                    pageNum:page,
+                    pageSize:pageSize,
+                })).then(response =>{
+                    this.newslist = response.data.pageInfo.list
+                    console.log(this.newslist)
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+        },
+
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>

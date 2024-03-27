@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../layui/css/layui.css">
+
+    <link rel="stylesheet" href="static/css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="static/css/entypo.css">
+    <link rel="stylesheet" href="static/css/css.css">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/neon-core.css">
+    <link rel="stylesheet" href="static/css/neon-theme.css">
+    <link rel="stylesheet" href="static/css/neon-forms.css">
+    <link rel="stylesheet" href="static/css/custom.css">
+
+
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+</head>
+<body>
+
+
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="index.html"><i class="entypo-home"></i>首页</a>
+    </li>
+    <li>
+        <a href="javascript:;">个人信息</a>
+    </li>
+    <li class="active">
+
+        <strong>编辑个人信息</strong>
+    </li>
+</ol>
+
+<!--<h3>-->
+    <!--&lt;!&ndash;<span class="label label-warning">New in 1.1.3</span>&ndash;&gt;-->
+    <!--类别列表-->
+    <!--&lt;!&ndash;<small>Try to resize the window to mobile width</small>&ndash;&gt;-->
+<!--</h3>-->
+<!--<br>-->
+
+<div class="row" id="app">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary" data-collapsed="0">
+
+            <div class="panel-heading">
+                <div class="panel-title">
+                    编辑个人信息
+                </div>
+
+                <div class="panel-options">
+                    <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                    <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+                    <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <form role="form" class="form-horizontal form-groups-bordered">
+
+
+                    <div class="form-group">
+                        <label for="filename" class="col-sm-3 control-label">头像</label>
+                        <div class="col-sm-5">
+                            <div class="layui-upload">
+                                <div class="layui-upload-list">
+                                    <input type="hidden" v-model="admin.filename" id="filename"/>
+                                    <img class="layui-upload-img" id="imgname" style="width: 92px;">
+                                    <p id="demoText"></p>
+                                    <button type="button" class="layui-btn" id="test1" style="background: #2b303a">上传图片</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin.uname" class="col-sm-3 control-label">用户名</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="admin.uname" readonly id="admin.uname" placeholder="用户名">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin.tname" class="col-sm-3 control-label">姓名</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="admin.tname" id="admin.tname" placeholder="姓名">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="admin.tel" class="col-sm-3 control-label">电话</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="admin.tel" id="admin.tel" placeholder="电话">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <button type="button" class="btn btn-default" @click="add()">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<link rel="stylesheet" href="static/css/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="static/css/rickshaw.min.css">
+
+<!-- Bottom Scripts -->
+<script src="static/js/main-gsap.js"></script>
+<script src="static/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/joinable.js"></script>
+<script src="static/js/resizeable.js"></script>
+<script src="static/js/neon-api.js"></script>
+<script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="static/js/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="static/js/jquery.sparkline.min.js"></script>
+<script src="static/js/d3.v3.js"></script>
+<script src="static/js/rickshaw.min.js"></script>
+<script src="static/js/raphael-min.js"></script>
+<script src="static/js/morris.min.js"></script>
+<script src="static/js/toastr.js"></script>
+<script src="static/js/neon-chat.js"></script>
+<script src="static/js/neon-custom.js"></script>
+<script src="static/js/neon-demo.js"></script>
+
+
+
+<script type="text/javascript" src="../axios/vue.js"></script>
+<script type="text/javascript" src="../axios/axios.min.js"></script>
+<script type="text/javascript" src="../axios/qs.js"></script>
+<script type="text/javascript" src="../axios/getUrlParams.js"></script>
+<script type="text/javascript" src="../layer/layer.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+
+<script>
+    // 消除子窗口内的theme主题按钮
+    $(".theme-button").remove()
+
+    var qs = Qs
+    var vmm =new Vue({
+        el:'#app',
+        data:{
+
+            admin:{
+                filename:"icon1.png",
+                uname:"",
+                tname:"",
+                tel:"",
+                id:"",
+            },
+        },
+        mounted(){
+            this.show()
+        },
+        updated(){
+            this.$nextTick(function(){
+                var img = "";
+                layui.use(['form', 'layer', 'upload'], function () {
+                    $ = layui.jquery;
+                    var form = layui.form
+                        , layer = layui.layer
+                        , upload = layui.upload;
+
+                    //普通图片上传
+                    layui.use('upload', function () {
+                        var $ = layui.jquery
+                            , upload = layui.upload;
+
+                        //普通图片上传
+                        var uploadInst = upload.render({
+                            elem: '#test1'
+                            , url: 'uploadImg'
+                            , accept: 'images'
+                            ,theme:'#00365a'
+                            , size: 50000
+                            , before: function (obj) {
+
+                                obj.preview(function (index, file, result) {
+                                    $('#imgname').attr('src', result);
+                                });
+                            }
+                            , done: function (res) {
+                                //如果上传失败
+                                if (res.code > 0) {
+                                    return layer.msg('上传失败');
+                                }
+                                //上传成功
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+                                var fileupload = $(".image");
+                                fileupload.attr("value", res.data.src);
+                                // $("#filename").val(res.data.src)
+                                vmm.admin.filename = res.data.src
+                                img = res.data.src;
+                            }
+                            , error: function () {
+                                //演示失败状态，并实现重传
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                demoText.find('.demo-reload').on('click', function () {
+                                    uploadInst.upload();
+                                });
+                            }
+                        });
+                    });
+                });
+            })
+        },
+        methods:{
+            show(){
+                axios.post('checkadmin',qs.stringify({
+                })).then(response =>{
+                    if(response.data.data ==400){
+                        location.replace("login.html")
+                    }else{
+                        this.admin  = response.data.admin
+                        $("#imgname").attr("src",'../upload/'+this.admin.filename)
+                    }
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+            add(){
+                if(this.admin.tname==""){
+                    layer.msg("姓名不能为空",{icon:5})
+                    return;
+                }
+                if(!/^[1][3,5,6,7,8,9][0-9]{9}$/.test(this.admin.tel)){
+                    layer.msg("电话输入错误",{icon:5})
+                    return;
+                }
+                axios.post('adminEdit',qs.stringify({
+                    uname:this.admin.uname,
+                    tname:this.admin.tname,
+                    tel:this.admin.tel,
+                    filename:this.admin.filename,
+                    id:this.admin.id,
+                })).then(response =>{
+                    layer.msg("编辑成功！",{icon:6})
+                }).catch(error =>{
+                })
+            },
+
+        },
+    })
+
+</script>
+
+
+</body>
+</html>

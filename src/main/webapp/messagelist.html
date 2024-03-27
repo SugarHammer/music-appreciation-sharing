@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link href="layui/css/layui.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        a.commentsubmit {
+            height: 70px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #e90101;
+            border: none;
+            line-height: 70px;
+            padding: 0 50px;
+        }
+
+        .layui-inline ul {
+            display: flex;
+            padding: 0px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div id="iframetop">
+
+</div>
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center">在线留言</h4>
+    </div>
+</header>
+
+<div id="app">
+
+    <main>
+        <section class="content-section" data-background="#ffffff">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <!--<h6>SHARE WITH US</h6>-->
+                            <h3>在线留言</h3>
+                        </div>
+                        <!-- end section-title -->
+                    </div>
+                    <!-- end col-12 -->
+                    <div class="col-12">
+                        <div class="comments">
+                            <ul class="comments-list">
+                                <li v-for="message in messagelist">
+                                    <figure class="avatar"><img :src="['upload/'+message.member.filename]" alt="Image">
+                                    </figure>
+                                    <div class="comment">
+                                        <p>{{message.content}}</p>
+                                        <p v-if="message.hfcontent!=null && message.hfcontent!=''">
+                                            <span class="layui-badge"> 回复:</span>{{message.hfcontent}}</p>
+                                        <small>{{message.savetime}}</small>
+                                        <!--<a href="#">REPLY</a>-->
+
+                                    </div>
+                                    <!-- end comment -->
+                                </li>
+
+                            </ul>
+                            <div class="comments-form">
+                                <h5>请在下方填写内容</h5>
+
+                                <div class="form-group">
+                                    <div id="test2" style="white-space: nowrap"></div>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <textarea placeholder="内容" v-model="content" style="color: grey"></textarea>
+                                </div>
+                                <!-- end form-group -->
+                                <div class="form-group">
+                                    <!--<input type="submit" value="Post Comment">-->
+                                    <a class="commentsubmit" href="javascript:;" @click="add()">提交</a>
+
+                                </div>
+                                <!-- end form-group -->
+                            </div>
+                            <!-- end comments-form -->
+                        </div>
+                        <!-- end comments -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end content-section -->
+        <footer class="footer">
+            <!-- end container -->
+            <div class="bottom-bar" id="iframefoot">
+                <!-- end container -->
+            </div>
+            <!-- end bottom-bar -->
+        </footer>
+        <!-- end footer -->
+    </main>
+
+
+</div>
+<!-- end slider -->
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript">
+
+    var qs = Qs
+    var pageNum = UrlParam.paramValues("pageNum")==null?1:UrlParam.paramValues("pageNum").toString()
+
+    var vmm = new Vue({
+        el: "#app",
+        data: {
+            content: "",
+            messagelist: [],
+            pageSize:10,
+            pageNum:pageNum,
+
+        },
+        mounted() {
+            this.getmessagelist()
+        },
+        methods: {
+
+
+
+            getmessagelist() {
+                axios.post('admin/messageList',qs.stringify({
+                    pageSize:this.pageSize
+                })).then(response =>{
+                    layui.use(['laypage', 'layer'], function(){
+                        var laypage = layui.laypage
+                            ,layer = layui.layer;
+                        //总页数大于页码总数
+                        laypage.render({
+                            elem: 'demo1'
+                            ,theme:"#2b303a"
+                            ,limit:vmm.pageSize
+                            ,curr:vmm.pageNum
+                            ,count: response.data.list.length //数据总数
+                            ,jump: function(obj,first){
+                                vmm.pageNum = obj.curr
+                                vmm.current_page(obj.curr,vmm.pageSize)
+                                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            }
+                        });
+                    });
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+
+            current_page(page,pageSize){
+                axios.post('admin/messageList',qs.stringify({
+                    pageNum:page,
+                    pageSize:pageSize,
+                })).then(response =>{
+                    this.messagelist = response.data.pageInfo.list
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+            add() {
+                axios.post('checkmember', qs.stringify({})).then(response => {
+                    if (response.data.data == 200) {
+                        if (this.content == "") {
+                            layer.msg("内容不能为空", {icon: 5})
+                            return;
+                        }
+                        axios.post('messageAdd', qs.stringify({
+                            content: this.content,
+                        })).then(response => {
+                            layer.msg("留言成功！", {icon: 6})
+                            this.getmessagelist()
+                        }).catch(error => {
+                            console.log(error)
+                        })
+                    } else {
+                        location.replace("login.html")
+                    }
+                })
+
+            },
+
+        }
+    })
+
+
+    window.onload = function () {
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+    }
+</script>
+</body>
+</html>

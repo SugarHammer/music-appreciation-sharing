@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <!--<link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">-->
+    <!--<link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">-->
+    <!--<link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">-->
+    <!--<link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">-->
+    <!--<link href="ico/favicon.png" rel="shortcut icon">-->
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
+
+    <link rel="stylesheet" href="kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="kindeditor/plugins/code/prettify.js"></script>
+    <script charset="utf-8" src="kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="kindeditor/lang/zh-CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+    </script>
+    <script>
+        KindEditor.ready(function(K) {
+            K.create('textarea[name="note"]', {
+                uploadJson : 'kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : 'kindeditor/jsp/file_manager_json.jsp',
+                allowFileManager : true,
+                allowImageUpload : true,
+                autoHeightMode : true,
+                afterCreate : function() {this.loadPlugin('autoheight');},
+                afterBlur : function(){ this.sync(); }  //Kindeditor下获取文本框信息
+            });
+        });
+    </script>
+
+
+
+</head>
+<body>
+
+<div id="iframetop">
+</div>
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center"></h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+    <section class="content-section">
+        <div class="container" id="app">
+            <div >
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4>发布帖子</h4>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <!--论坛-->
+                <div style="padding:0px 30px;">
+
+                    <div class="layui-container" style="border: 1px solid #B8B8B8;margin-top: 20px;width: auto;">
+                        <div style="background: #E3E3E3;color:#0BAC4F;font-weight: bold;padding: 10px 10px;border-bottom: 1px solid #B8B8B8;">
+                            发布帖子
+                        </div>
+                        <div class="layui-row layui-col-space15">
+                            <div class="layui-col-md8" style="padding: 20px 50px;">
+
+                                <form class="layui-form">
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">标题</label>
+                                        <div class="layui-input-block">
+                                            <input type="text" v-model="title" placeholder="请输入标题" autocomplete="off"
+                                                   class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <label class="layui-form-label">版块</label>
+                                        <div class="layui-input-block">
+                                            <select v-model="sectionid" id="sectionid">
+                                                <option value="">请选择版块</option>
+                                                <option v-for="section in sectionlist" :value="section.id">
+                                                    {{section.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item layui-form-text">
+                                        <label class="layui-form-label">内容</label>
+                                        <div class="layui-input-block">
+                                    <textarea name="content" id="editor_id" placeholder="请输入内容" style="width: 100%"
+                                              class="layui-textarea"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <a class="layui-btn" lay-submit lay-filter="formDemo"
+                                               @click="add()" style="color:white;">立即提交</a>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!--论坛-->
+
+                <!-- end col-12 -->
+                <!-- end col-2 -->
+
+
+
+            </div>
+
+        </div>
+        <!-- end container -->
+    </section>
+    <footer class="footer">
+        <!-- end container -->
+        <div class="bottom-bar" id="iframefoot">
+            <!-- end container -->
+        </div>
+        <!-- end bottom-bar -->
+    </footer>
+    <!-- end footer -->
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+    var qs = Qs
+    var movieid = UrlParam.paramValues("movieid")==undefined?"":UrlParam.paramValues("movieid").toString();
+    var vmm = new Vue({
+        el:"#app",
+        data:{
+            movieid:movieid,
+            title:"",
+            sectionid:"",
+            content:"",
+            sectionlist:[],
+            keyword:"",
+        },
+        mounted(){
+            this.getsectionlist()
+            layui.use(['form'], function(){
+                var form = layui.form
+            })
+            sessionStorage.setItem("signoutShow","articlelist")
+        },
+        methods:{
+
+            add(){
+                axios.post('checkmember',qs.stringify({
+                })).then(response =>{
+                    if(response.data.data==200){
+                    this.sectionid = $("#sectionid").val()
+                    this.content = window.editor.html()
+
+
+                    if(this.title==""){
+                        layer.msg("标题不能为空",{icon:5})
+                        return false;
+                    }
+
+
+                    if(this.sectionid==""){
+                        layer.msg("请选择版块",{icon:5})
+                        return false;
+                    }
+
+
+                    if(this.content==""){
+                        layer.msg("发表内容不能为空",{icon:5})
+                        return false;
+                    }
+
+
+                    axios.post('articleAdd',qs.stringify({
+                        movieid:movieid,
+                        title:this.title,
+                        sectionid:this.sectionid,
+                        content:this.content,
+                    })).then(response =>{
+                        layer.msg("发表成功",{icon:6})
+                        location.replace("articlelist.html")
+                }).catch(error =>{
+                        console.log(error)
+                })
+
+                }else{
+                    location.replace("login.html")
+                }
+            }).catch(error =>{
+                    console.log(error)
+            })
+            },
+
+
+            getarticlelist() {
+                axios.post('admin/articleList',qs.stringify({
+                    sectionid:this.categoryid,
+                    memberid:memberid,
+                    pageSize:this.pageSize
+                })).then(response =>{
+                    layui.use(['laypage', 'layer'], function(){
+                    var laypage = layui.laypage
+                        ,layer = layui.layer;
+                    //总页数大于页码总数
+                    laypage.render({
+                        elem: 'demo1'
+                        ,limit:vmm.pageSize
+                        ,count: response.data.list.length //数据总数
+                        ,jump: function(obj,first){
+                            vmm.current_page(obj.curr,vmm.pageSize)
+                            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                        }
+                    });
+                });
+            }).catch(error =>{
+                    console.log(error)
+            })
+            },
+
+            current_page(page,pageSize){
+                axios.post('admin/articleList',qs.stringify({
+                    sectionid:this.categoryid,
+                    memberid:memberid,
+                    pageNum:page,
+                    pageSize:pageSize,
+                })).then(response =>{
+                    this.articlelist = response.data.pageInfo.list
+                console.log(this.articlelist)
+            }).catch(error =>{
+                    console.log(error)
+            })
+            },
+
+
+
+            getsectionlist(){
+                axios.post('admin/sectionList',qs.stringify({
+                })).then(response =>{
+                    this.sectionlist = response.data.list
+            }).catch(error =>{
+                    console.log(error)
+            })
+            },
+
+        }
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>

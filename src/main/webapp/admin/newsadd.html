@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../layui/css/layui.css">
+
+    <link rel="stylesheet" href="static/css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="static/css/entypo.css">
+    <link rel="stylesheet" href="static/css/css.css">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/neon-core.css">
+    <link rel="stylesheet" href="static/css/neon-theme.css">
+    <link rel="stylesheet" href="static/css/neon-forms.css">
+    <link rel="stylesheet" href="static/css/custom.css">
+
+
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+    <link rel="stylesheet" href="../kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="../kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="../kindeditor/plugins/code/prettify.js"></script>
+    <script charset="utf-8" src="../kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="../kindeditor/lang/zh-CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+    </script>
+    <script>
+        KindEditor.ready(function(K) {
+            K.create('textarea[name="note"]', {
+                width:"100%",
+                uploadJson : '../kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '../kindeditor/jsp/file_manager_json.jsp',
+                allowFileManager : true,
+                allowImageUpload : true,
+                autoHeightMode : true,
+                afterCreate : function() {this.loadPlugin('autoheight');},
+                afterBlur : function(){ this.sync(); }  //Kindeditor下获取文本框信息
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="index.html"><i class="entypo-home"></i>首页</a>
+    </li>
+    <li>
+        <a href="javascript:;">资讯管理</a>
+    </li>
+    <li class="active">
+
+        <strong>新增资讯</strong>
+    </li>
+</ol>
+
+<!--<h3>-->
+    <!--&lt;!&ndash;<span class="label label-warning">New in 1.1.3</span>&ndash;&gt;-->
+    <!--类别列表-->
+    <!--&lt;!&ndash;<small>Try to resize the window to mobile width</small>&ndash;&gt;-->
+<!--</h3>-->
+<!--<br>-->
+
+<div class="row" id="app">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary" data-collapsed="0">
+
+            <div class="panel-heading">
+                <div class="panel-title">
+                    新增资讯
+                </div>
+
+                <div class="panel-options">
+                    <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                    <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+                    <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <form role="form" class="form-horizontal form-groups-bordered">
+
+
+                    <div class="form-group">
+                        <label for="filename" class="col-sm-3 control-label">图片</label>
+                        <div class="col-sm-5">
+                            <div class="layui-upload">
+                                <div class="layui-upload-list">
+                                    <input type="hidden" v-model="news.filename" id="filename"/>
+                                    <img class="layui-upload-img" id="imgname" style="width: 92px;">
+                                    <p id="demoText"></p>
+                                    <button type="button" class="layui-btn" id="test1" style="background: #2b303a">上传图片</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="news.title" class="col-sm-3 control-label">标题</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="news.title" id="news.title" placeholder="标题">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="editor_id" class="col-sm-3 control-label">内容</label>
+
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="editor_id" v-model="content" placeholder="内容" style="width: 100%;height: 300px;"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <button type="button" class="btn btn-default" @click="add()">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<link rel="stylesheet" href="static/css/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="static/css/rickshaw.min.css">
+
+<!-- Bottom Scripts -->
+<script src="static/js/main-gsap.js"></script>
+<script src="static/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/joinable.js"></script>
+<script src="static/js/resizeable.js"></script>
+<script src="static/js/neon-api.js"></script>
+<script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="static/js/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="static/js/jquery.sparkline.min.js"></script>
+<script src="static/js/d3.v3.js"></script>
+<script src="static/js/rickshaw.min.js"></script>
+<script src="static/js/raphael-min.js"></script>
+<script src="static/js/morris.min.js"></script>
+<script src="static/js/toastr.js"></script>
+<script src="static/js/neon-chat.js"></script>
+<script src="static/js/neon-custom.js"></script>
+<script src="static/js/neon-demo.js"></script>
+
+
+
+<script type="text/javascript" src="../axios/vue.js"></script>
+<script type="text/javascript" src="../axios/axios.min.js"></script>
+<script type="text/javascript" src="../axios/qs.js"></script>
+<script type="text/javascript" src="../axios/getUrlParams.js"></script>
+<script type="text/javascript" src="../layer/layer.js"></script>
+<script type="text/javascript" src="../laydate/laydate.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+
+<script>
+
+    var qs = Qs
+    var vmm =new Vue({
+        el:'#app',
+        data:{
+
+            news:{
+                name:"",
+                filename:"noimg.jpg",
+                content:"",
+            },
+
+        },
+        mounted(){
+            this.$nextTick(function(){
+
+
+                var img = "";
+                layui.use(['form', 'layer', 'upload'], function () {
+                    $ = layui.jquery;
+                    var form = layui.form
+                        , layer = layui.layer
+                        , upload = layui.upload;
+
+                    //普通图片上传
+                    layui.use('upload', function () {
+                        var $ = layui.jquery
+                            , upload = layui.upload;
+
+                        //普通图片上传
+                        var uploadInst = upload.render({
+                            elem: '#test1'
+                            , url: 'uploadImg'
+                            , accept: 'images'
+                            ,theme:'#00365a'
+                            , size: 50000
+                            , before: function (obj) {
+
+                                obj.preview(function (index, file, result) {
+                                    $('#imgname').attr('src', result);
+                                });
+                            }
+                            , done: function (res) {
+                                //如果上传失败
+                                if (res.code > 0) {
+                                    return layer.msg('上传失败');
+                                }
+                                //上传成功
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+                                var fileupload = $(".image");
+                                fileupload.attr("value", res.data.src);
+                                // $("#filename").val(res.data.src)
+                                vmm.news.filename = res.data.src
+                                img = res.data.src;
+                            }
+                            , error: function () {
+                                //演示失败状态，并实现重传
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                demoText.find('.demo-reload').on('click', function () {
+                                    uploadInst.upload();
+                                });
+                            }
+                        });
+
+                    });
+                });
+            })
+        },
+        methods:{
+            add(){
+                this.news.content = window.editor.html()
+
+
+                if(this.news.title==""){
+                    layer.msg("标题不能为空",{icon:5})
+                    return;
+                }
+
+
+                axios.post('newsAdd',qs.stringify({
+                    filename:this.news.filename,
+                    title:this.news.title,
+                    content:this.news.content,
+                })).then(response =>{
+                    location.replace("newslist.html")
+                }).catch(error =>{
+                })
+            },
+
+
+
+        },
+    })
+
+</script>
+
+
+</body>
+</html>

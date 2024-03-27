@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.MovieDAO">
+    <resultMap type="com.it.entity.Movie" id="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="filename" property="filename" jdbcType="VARCHAR"/>
+        <result column="videoname" property="videoname" jdbcType="VARCHAR"/>
+        <result column="categoryid" property="categoryid" jdbcType="INTEGER"/>
+        <result column="areaid" property="areaid" jdbcType="INTEGER"/>
+        <result column="author" property="author" jdbcType="VARCHAR"/>
+        <result column="yeartime" property="yeartime" jdbcType="VARCHAR"/>
+        <result column="playtime" property="playtime" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="cs" property="cs" jdbcType="INTEGER"/>
+        <result column="score" property="score" jdbcType="DOUBLE"/>
+        <result column="isfree" property="isfree" jdbcType="VARCHAR"/>
+        <result column="fee" property="fee" jdbcType="DOUBLE"/>
+        <result column="zan" property="zan" jdbcType="INTEGER"/>
+        <result column="memberid" property="memberid" jdbcType="VARCHAR"/>
+        <result column="shstatus" property="shstatus" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <update id="update" parameterType="com.it.entity.Movie">
+        update Movie
+        <set>
+            <if test="name!=null and name!=''"> name=#{name},</if>
+            <if test="filename!=null and filename!=''"> filename=#{filename},</if>
+            <if test="videoname!=null and videoname!=''"> videoname=#{videoname},</if>
+            <if test="categoryid!=null and categoryid!=''"> categoryid=#{categoryid},</if>
+            <if test="areaid!=null and areaid!=''"> areaid=#{areaid},</if>
+            <if test="author!=null and author!=''"> author=#{author},</if>
+            <if test="yeartime!=null and yeartime!=''"> yeartime=#{yeartime},</if>
+            <if test="playtime!=null and playtime!=''"> playtime=#{playtime},</if>
+            <if test="content!=null and content!=''"> content=#{content},</if>
+            <if test="cs!=null and cs!=''"> cs=#{cs},</if>
+            <if test="score!=null and score!=''"> score=#{score},</if>
+            <if test="isfree!=null and isfree!=''"> isfree=#{isfree},</if>
+            <if test="fee!=null and fee!=''"> fee=#{fee},</if>
+            <if test="zan!=null and zan!=''"> zan=#{zan},</if>
+            <if test="shstatus!=null and shstatus!=''"> shstatus=#{shstatus},</if>
+
+        </set>
+        where id=#{id}
+    </update>
+
+    <insert id="add" parameterType="com.it.entity.Movie">
+        insert into Movie values(null,#{name},#{filename},#{videoname},#{categoryid},#{areaid},#{author},#{yeartime}
+        ,#{playtime},#{content},#{cs},#{score},#{isfree},#{fee},0,#{memberid},#{shstatus})
+    </insert>
+
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+        select * from Movie where 1=1
+        <if test="key!=null and key!=''">
+            and (name like "%"#{key}"%" or author like "%"#{key}"%")
+        </if>
+        <if test="key1!=null and key1!=''">
+            and categoryid =#{key1}
+        </if>
+        <if test="key2!=null and key2!=''">
+            and areaid =#{key2}
+        </if>
+
+        <if test="key2!=null and key2!=''">
+            and areaid =#{key2}
+        </if>
+        <if test="isfree!=null and isfree!=''">
+            and isfree =#{isfree}
+        </if>
+        <if test="memberid!=null and memberid!=''">
+            and memberid =#{memberid}
+        </if>
+        <if test="shstatus!=null and shstatus!=''">
+            and shstatus =#{shstatus}
+        </if>
+
+        <choose>
+            <when test="key3!=null and key3!='' and key3!='2015'.toString()">
+                and yeartime=#{key3}
+            </when>
+            <when test="key3!=null and key3!='' and key3=='2015'.toString()">
+                and yeartime &lt;= #{key3}
+            </when>
+        </choose>
+        <choose>
+            <when test="orderby!=null and orderby!='' and orderby=='score'.toString()">
+                order by score desc
+            </when>
+            <when test="orderby!=null and orderby!='' and orderby=='cs'.toString()">
+                order by cs desc
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="findById" parameterType="com.it.entity.Movie" resultType="com.it.entity.Movie">
+      select * from Movie where id=#{id}
+    </select>
+
+    <delete id="delete" parameterType="Int">
+      delete from Movie where id=#{id}
+    </delete>
+
+    <select id="selectSongs" parameterType="HashMap" resultMap="BaseResultMap">
+        select * from Movie where id in (select movieid from collect where sheetid = #{sheetid})
+    </select>
+</mapper>
+

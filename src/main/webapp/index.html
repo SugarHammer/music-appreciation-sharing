@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords" content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+
+<div id="iframetop" style="position: relative;z-index: 2000 !important;">
+
+    <!--<nav class="mobile-menu">-->
+    <!--<div class="inner">-->
+    <!--<div class="mobile-search">-->
+    <!--<h6>Type movie or tv show name to find it</h6>-->
+    <!--<form>-->
+    <!--<input type="search" placeholder="Search here">-->
+    <!--<input type="submit" value="FIND">-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end mobile-search &ndash;&gt;-->
+    <!--<a href="account.html" class="button-account"><i class="lni lni-user"></i> ACCOUNT </a>-->
+    <!--&lt;!&ndash; end button-account &ndash;&gt;-->
+    <!--<div class="site-menu">-->
+    <!--<ul>-->
+    <!--<li><a href="index.html">HOME</a></li>-->
+    <!--<li><a href="movies.html">MOVIES</a></li>-->
+    <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+    <!--<li><a href="tips.html">TIPS</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end inner &ndash;&gt;-->
+    <!--</nav>-->
+
+    <!--<nav class="navbar">-->
+    <!--<div class="logo"><a href="index.html"> <img src="images/logo.png" alt="Image"> </a></div>-->
+    <!--&lt;!&ndash; end logo &ndash;&gt;-->
+    <!--<div class="site-menu">-->
+    <!--<ul>-->
+    <!--<li><a href="index.html">HOME</a></li>-->
+    <!--<li><a href="movies.html">MOVIES</a></li>-->
+    <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+    <!--<li><a href="tips.html">TIPS</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+    <!--<div class="user-menu">-->
+    <!--<div class="navbar-search"><i class="lni lni-search-alt"></i></div>-->
+    <!--&lt;!&ndash; end navbar-search &ndash;&gt;-->
+    <!--<div class="navbar-notify"><i class="lni lni-alarm"></i><b>2</b>-->
+    <!--<div class="notify-dropdown">-->
+    <!--<div class="total-notify">-->
+    <!--<h6>Notification</h6>-->
+    <!--<span>3</span></div>-->
+    <!--&lt;!&ndash; end total-notify &ndash;&gt;-->
+    <!--<ul>-->
+    <!--<li>-->
+    <!--<p><u>Marcus</u> download 2000+ Simple Line Icons and Explore</p>-->
+    <!--<span>2 Days</span></li>-->
+    <!--<li>-->
+    <!--<p>Added new movie <u>Afterlife</u> Cheatsheet to Start Using With Your Projects.</p>-->
+    <!--<span>3 Days</span></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end notify-dropdown &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end navbar-notify &ndash;&gt;-->
+    <!--<div class="navbar-account"><a href="account.html">ACCOUNT <i class="lni lni-user"></i> </a></div>-->
+    <!--&lt;!&ndash; end navbar-account &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end user-menu &ndash;&gt;-->
+    <!--<div class="hamburger-menu">-->
+    <!--<button class="hamburger">-->
+    <!--<svg width="45" height="45" viewBox="0 0 100 100">-->
+    <!--<path class="line line1"-->
+    <!--d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>-->
+    <!--<path class="line line2" d="M 20,50 H 80"/>-->
+    <!--<path class="line line3"-->
+    <!--d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>-->
+    <!--</svg>-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end hamburger-menu &ndash;&gt;-->
+    <!--</nav>-->
+
+
+</div>
+<!-- end mobile-menu -->
+<!-- end navbar -->
+
+
+<div id="app"  style="position: relative;z-index: 999">
+    <header class="slider">
+        <div class="main-slider">
+            <div class="swiper-wrapper">
+
+                <!--<div class="swiper-slide">-->
+                <!--<div class="slide-inner" data-background="images/slide01.jpg">-->
+                <!--<div class="container" data-swiper-parallax="200">-->
+                <!--<h6 class="tagline">NEW RELEASES</h6>-->
+                <!--<h2 class="name">The Rise of<br>-->
+                <!--<strong>Football</strong></h2>-->
+                <!--<ul class="features">-->
+                <!--<li>-->
+                <!--<div class="rate">-->
+                <!--<svg class="circle-chart" viewBox="0 0 30 30" width="40" height="40"-->
+                <!--xmlns="http://www.w3.org/2000/svg">-->
+                <!--<circle class="circle-chart__background" stroke="#2f3439" stroke-width="2"-->
+                <!--fill="none" cx="15" cy="15" r="14"></circle>-->
+                <!--<circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2"-->
+                <!--stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>-->
+                <!--</svg>-->
+                <!--<b>5.4</b> IMDB SCORE-->
+                <!--</div>-->
+                <!--&lt;!&ndash; end rate &ndash;&gt;-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="year">2020</div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="hd">4K <b>ULTRA HD</b></div>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<div class="tags">Romance, Action</div>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--<p class="description">-->
+                <!--'The Football' follows Dee Dee Allen and Barry Glickman <br>who are New York City stage-->
+                <!--stars.-->
+                <!--</p>-->
+                <!--<a href="movie-single.html" class="play-btn">WATCH TRAILER</a> <a href="account.html"-->
+                <!--class="add-btn">+</a></div>-->
+                <!--&lt;!&ndash; end container &ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash; end slide-inner &ndash;&gt;-->
+                <!--</div>-->
+
+
+                <!-- end swiper-slide -->
+                <div v-for="imgadv in imgadvlist" class="swiper-slide">
+                    <!--<div class="slide-inner bg-image" data-background="images/slide03.jpg">-->
+                    <div class="slide-inner bg-image" :data-background="['upload/'+imgadv.filename]">
+                        <div class="container" data-swiper-parallax="200">
+                            <h6 class="tagline">NEW RELEASES</h6>
+                            <h2 class="name">The History of <br>
+                                <strong>Ottomans</strong></h2>
+                            <ul class="features">
+                                <!--<li>-->
+                                    <!--<div class="rate">-->
+                                        <!--<svg class="circle-chart" viewBox="0 0 30 30" width="40" height="40"-->
+                                             <!--xmlns="http://www.w3.org/2000/svg">-->
+                                            <!--<circle class="circle-chart__background" stroke="#2f3439" stroke-width="2"-->
+                                                    <!--fill="none" cx="15" cy="15" r="14"></circle>-->
+                                            <!--<circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2"-->
+                                                    <!--stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>-->
+                                        <!--</svg>-->
+                                        <!--<b>5.4</b> IMDB SCORE-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash; end rate &ndash;&gt;-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="year">2020</div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="hd">1080 <b>HD</b></div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="tags">Romance, Action</div>-->
+                                <!--</li>-->
+                            </ul>
+                            <p class="description">From attending the prom with her girlfriend, Alyssa<br>
+                                When Dee Dee and Barry decide that Emma's </p>
+                            <a :href="imgadv.url" class="play-btn">播放</a>
+                            <!--<a href="account.html" class="add-btn">+</a></div>-->
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- end swiper-wrapper -->
+            <div class="swiper-pagination"></div>
+            <!-- end swiper-pagination -->
+        </div>
+        <!-- end main-slider -->
+    </header>
+
+
+    <main>
+        <section class="content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <!--<h6>ONLINE STREAMING</h6>-->
+                            <h3>高分榜</h3>
+                        </div>
+                        <!-- end section-title -->
+                    </div>
+                    <!-- end col-12 -->
+                    <div v-for="(scoremovie,i) in scoremovielist" v-if="i<4" class="col-lg-3 col-sm-6">
+                        <div class="category-thumb">
+                            <figure class="category-image" style="height: 380px;">
+                                <img :src="['upload/'+scoremovie.filename]" alt="Image"  style="height: 100%">
+
+                            </figure>
+                            <div class="category-content">
+                                <!--<ul class="tags">-->
+                                    <!--<li style="font-size:16px;">{{scoremovie.score}}</li>-->
+                                    <!--&lt;!&ndash;<li>Drama</li>&ndash;&gt;-->
+                                <!--</ul>-->
+                                <h3 class="name">{{scoremovie.name}}</h3>
+                                <div class="play-btn"><a :href="['moviedetails.html?id='+scoremovie.id]">+</a></div>
+                                <small class="details">{{scoremovie.category.name}} <span>-</span> {{scoremovie.yeartime}}</small>
+                                <!--<span style="position: absolute !important;right: 10px;">{{scoremovie.score}}</span>-->
+                            </div>
+                            <!-- end category-content -->
+                        </div>
+                        <!-- end category-thumb -->
+                    </div>
+                    <!-- end col-3 -->
+
+
+                    <!-- end col-3 -->
+
+                    <!-- end col-3 -->
+
+                    <!-- end col-3 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end content-section -->
+
+        <!-- end content-section -->
+        <section class="content-section" data-background="#111111">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title text-center light">
+                            <!--<h6>FIND ANYWHERE ELSE</h6>-->
+                            <h2>最新发布</h2>
+                        </div>
+                        <!-- end section-title -->
+                    </div>
+                    <!-- end col-12 -->
+                    <div v-for="(movie,i) in movielist" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="video-thumb light">
+                            <figure class="video-image" style="height: 150px;"><a
+                                    :href="['moviedetails.html?id='+movie.id]"><img :src="['upload/'+movie.filename]"
+                                                                                    alt="Image"
+                                                                                    style="height: 100%"></a>
+                                <div class="circle-rate">
+                                    <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2"
+                                                fill="none" cx="15" cy="15" r="14"></circle>
+                                        <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2"
+                                                stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                                    </svg>
+                                    <b>{{movie.score}}</b></div>
+                                <!-- end circle-rate -->
+                                <!--<div class="hd">1080 <b>HD</b></div>-->
+                                <!-- end hd -->
+                            </figure>
+                            <div class="video-content">
+                                <small class="range">{{movie.yeartime}}</small>
+                                <ul class="tags">
+                                    <li>{{movie.category.name}}</li>
+                                    <li v-if="movie.isfree == '是'"><span class="layui-badge layui-bg">免费</span></li>
+                                    <li v-if="movie.isfree == '否'"><span class="layui-badge layui-bg-orange">付费</span></li>
+
+                                </ul>
+                                <!--<div class="age">PG13</div>-->
+                                <!-- end age -->
+                                <h3 class="name"><a :href="['moviedetails.html?id='+movie.id]">{{movie.name}}</a></h3>
+                            </div>
+                            <!-- end video-content -->
+                        </div>
+                        <!-- end video-thumb -->
+                    </div>
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+                    <div class="col-12 text-center"><a href="movielist.html" class="custom-button">浏览所有的歌曲</a></div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end content-section -->
+
+        <!-- end content-section -->
+
+        <!-- end content-section -->
+
+        <!-- end content-section -->
+        <footer class="footer">
+
+            <!-- end container -->
+            <div class="bottom-bar" id="iframefoot">
+                <!-- end container -->
+            </div>
+            <!-- end bottom-bar -->
+        </footer>
+        <!-- end footer -->
+    </main>
+</div>
+<!-- end slider -->
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+
+    var qs = Qs
+    var vmm = new Vue({
+        el: "#app",
+        data: {
+            imgadvlist: [],
+            movielist: [],
+            scoremovielist: [],
+
+        },
+        mounted() {
+            this.getimgadvlist()
+            this.getmovielist()
+            this.getscoremovielist()
+        },
+        methods: {
+
+            getscoremovielist() {
+                axios.post('admin/movieList', qs.stringify({
+                    orderby:"score",
+                    shstatus:"通过"
+                })).then(response => {
+                    this.scoremovielist = response.data.list
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            getimgadvlist() {
+                axios.post('admin/imgadvList', qs.stringify({})).then(response => {
+                    this.imgadvlist = response.data.list
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            getmovielist() {
+                axios.post('admin/movieList', qs.stringify({
+                    shstatus:"通过"
+                })).then(response => {
+                    this.movielist = response.data.list
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+        }
+    })
+
+
+    window.onload = function () {
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+    }
+</script>
+</body>
+</html>

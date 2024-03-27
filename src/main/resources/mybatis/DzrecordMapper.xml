@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.DzrecordDAO">
+    <resultMap type="com.it.entity.Dzrecord" id="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="memberid" property="memberid" jdbcType="INTEGER"/>
+        <result column="movieid" property="movieid" jdbcType="INTEGER"/>
+        <result column="categroyid" property="categroyid" jdbcType="INTEGER"/>
+
+
+
+    </resultMap>
+
+    <insert id="add" parameterType="com.it.entity.Dzrecord">
+      insert into Dzrecord values(null,#{memberid},#{movieid},#{categroyid})
+    </insert>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from Dzrecord where 1=1
+        <if test="memberid!=null and memberid!=''">
+            and memberid=#{memberid}
+        </if>
+        <if test="movieid!=null and movieid!=''">
+            and movieid=#{movieid}
+        </if>
+        <if test="categroyid!=null and categroyid!=''">
+            and categroyid=#{categroyid}
+        </if>
+
+    </select>
+
+
+
+    <delete id="delete" parameterType="int">
+      delete from Dzrecord where id=#{id}
+    </delete>
+
+
+</mapper>
+

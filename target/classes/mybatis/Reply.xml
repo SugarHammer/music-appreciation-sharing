@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.ReplyDAO">
+    <resultMap type="com.it.entity.Reply" id="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="memberid" property="memberid" jdbcType="INTEGER"/>
+        <result column="articleid" property="articleid" jdbcType="INTEGER"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="savetime" property="savetime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.it.entity.Reply">
+        insert into Reply values(null,#{memberid},#{articleid},#{content},#{savetime})
+    </insert>
+
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+        select * from Reply where 1=1
+        <if test="memberid!=null and memberid!=''">
+            and memberid=#{memberid}
+        </if>
+        <if test="key!=null and key!=''">
+            and memberid in (select id from member  where tname like "%"#{key}"%")
+        </if>
+        <if test="articleid!=null and articleid!=''">
+            and articleid=#{articleid}
+        </if>
+        order by id desc
+    </select>
+    <delete id="delete" parameterType="Integer">
+        delete from Reply where id=#{id}
+    </delete>
+
+
+    <select id="findById" parameterType="Integer" resultType="com.it.entity.Reply">
+        select * from Reply where id=#{id}
+    </select>
+
+</mapper>

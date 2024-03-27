@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .container .row .col-12 .categorymenus{
+            position: relative;
+        }
+
+        .container .row .col-12 .categorymenus .menuschild ul{
+            display: flex;
+        }
+
+        .container .row .col-12 .categorymenus .menuschild ul li{
+            margin-left: 2px;
+            width: 100px;
+        }
+
+        .container .row .col-12 .categorymenus .menuschild ul li a,.container .row .col-12 .categorymenus .menuschild ul li span{
+            border:0px solid red;
+            display: block;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .container .row .col-12 .categorymenus .menuschild ul li a:hover{
+            border:1px solid #e90101;
+            background: #e90101;
+            color:white;
+            border-radius: 3px 3px;
+        }
+
+
+        .active{
+            border:1px solid #e90101;
+            background: #e90101;
+            color:white;
+            border-radius: 3px 3px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="iframetop">
+</div>
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center"></h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+    <section class="content-section">
+        <div class="container" id="app">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h4>音乐库</h4>
+                    </div>
+
+
+                    <div class="categorymenus">
+                        <div class="menuschild">
+                            <ul>
+                                <li><span style="text-align: left;font-weight: bold">分类</span></li>
+                                <li><a href="javascript:;" @click="getmovielist('',key2,key3)" :class="key1 ==''?'active':''">全部</a></li>
+                                <li v-for="category in categorylist"><a href="javascript:;" @click="getmovielist(category.id,key2,key3)" :class="category.id ==key1?'active':''">{{category.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="categorymenus">
+                        <div class="menuschild">
+                            <ul>
+                                <li><span style="text-align: left;font-weight: bold">地区</span></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,'',key3)" :class="key2 ==''?'active':''">全部</a></li>
+                                <li v-for="area in arealist"><a href="javascript:;" @click="getmovielist(key1,area.id,key3)" :class="area.id ==key2?'active':''">{{area.name}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="categorymenus">
+                        <div class="menuschild">
+                            <ul>
+                                <li><span style="text-align: left;font-weight: bold">年代</span></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'')" :class="key3 ==''?'active':''">全部</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2021')" :class="'2021' ==key3?'active':''">2021</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2020')" :class="'2020' ==key3?'active':''">2020</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2019')" :class="'2019' ==key3?'active':''">2019</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2018')" :class="'2018' ==key3?'active':''">2018</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2017')" :class="'2017' ==key3?'active':''">2017</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2016')" :class="'2016' ==key3?'active':''">2016</a></li>
+                                <li><a href="javascript:;" @click="getmovielist(key1,key2,'2015')" :class="'2015' ==key3?'active':''">2016之前</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- end col-12 -->
+                <!-- end col-2 -->
+                <div v-for="(movie,i) in movielist" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+                    <div class="video-thumb">
+                        <figure class="video-image" style="height: 150px;"> <a href="#"><img :src="['upload/'+movie.filename]" alt="Image" style="height: 100%;"></a>
+                            <div class="circle-rate">
+                                <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                                    <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                                </svg>
+                                <b>{{movie.score}}''</b> </div>
+                            <!-- end circle-rate -->
+                            <!--<div class="hd">1080 <b>HD</b></div>-->
+                            <!-- end hd -->
+                        </figure>
+                        <div class="video-content">
+                            <small class="range">{{movie.yeartime}}</small>
+                            <ul class="tags">
+                                <li>{{movie.category.name}}</li>
+                                <li v-if="movie.isfree == '是'"><span class="layui-badge layui-bg">免费</span></li>
+                                <li v-if="movie.isfree == '否'"><span class="layui-badge layui-bg-orange">付费</span></li>
+
+                            </ul>
+                            <!--<div class="age">PG13</div>-->
+                            <!-- end age -->
+                            <h3 class="name"><a :href="['moviedetails.html?id='+movie.id]">{{movie.name}}</a></h3>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div id="demo1" style="text-align: center"></div>
+
+        </div>
+        <!-- end container -->
+    </section>
+    <footer class="footer">
+        <!-- end container -->
+        <div class="bottom-bar" id="iframefoot">
+            <!-- end container -->
+        </div>
+        <!-- end bottom-bar -->
+    </footer>
+    <!-- end footer -->
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+    var qs = Qs
+    var pageNum = UrlParam.paramValues("pageNum")==null?1:UrlParam.paramValues("pageNum").toString()
+    var key = UrlParam.paramValues("key")==null?"":UrlParam.paramValues("key").toString()
+    var key1 = UrlParam.paramValues("key1")==null?"":UrlParam.paramValues("key1").toString()
+    var key2 = UrlParam.paramValues("key2")==null?"":UrlParam.paramValues("key2").toString()
+    var key3 = UrlParam.paramValues("key3")==null?"":UrlParam.paramValues("key3").toString()
+
+    var vmm = new Vue({
+        el:"#app",
+        data:{
+            movielist:[],
+            categorylist:[],
+            arealist:[],
+
+            key:key,
+            key1:key1,
+            key2:key2,
+            key3:key3,
+
+            pageSize:12,
+            pageNum:pageNum,
+        },
+        mounted(){
+            this.getmovielist('','','')
+            this.getcategorylist()
+            this.getarealist()
+        },
+        methods:{
+
+            getmovielist(key1,key2,key3) {
+                this.key1 = key1
+                this.key2 = key2
+                this.key3 = key3
+                axios.post('admin/movieList',qs.stringify({
+                    key:this.key,
+                    key1:this.key1,
+                    key2:this.key2,
+                    key3:this.key3,
+                    shstatus:"通过",
+                    pageSize:this.pageSize
+                })).then(response =>{
+                    layui.use(['laypage', 'layer'], function(){
+                        var laypage = layui.laypage
+                            ,layer = layui.layer;
+                        //总页数大于页码总数
+                        laypage.render({
+                            elem: 'demo1'
+                            ,theme:"#2b303a"
+                            ,limit:vmm.pageSize
+                            ,curr:vmm.pageNum
+                            ,count: response.data.list.length //数据总数
+                            ,jump: function(obj,first){
+                                vmm.pageNum = obj.curr
+                                vmm.current_page(obj.curr,vmm.pageSize)
+                                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            }
+                        });
+                    });
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+
+            current_page(page,pageSize){
+                axios.post('admin/movieList',qs.stringify({
+                    key:this.key,
+                    key1:this.key1,
+                    key2:this.key2,
+                    key3:this.key3,
+                    shstatus:"通过",
+                    pageNum:page,
+                    pageSize:pageSize,
+                })).then(response =>{
+                    this.movielist = response.data.pageInfo.list
+                    console.log(this.movielist)
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+            getcategorylist() {
+                axios.post('admin/categoryList', qs.stringify({
+                })).then(response => {
+                    this.categorylist = response.data.list
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+            getarealist() {
+                axios.post('admin/areaList', qs.stringify({
+                })).then(response => {
+                    this.arealist = response.data.list
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+
+        }
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.ArticleDAO">
+
+    <resultMap type="com.it.entity.Article" id="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="memberid" property="memberid" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="filename" property="filename" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="savetime" property="savetime" jdbcType="VARCHAR"/>
+        <result column="lookcs" property="lookcs" jdbcType="INTEGER"/>
+        <result column="delstatus" property="delstatus" jdbcType="VARCHAR"/>
+        <result column="sectionid" property="sectionid" jdbcType="INTEGER"/>
+        <result column="isjh" property="isjh" jdbcType="VARCHAR"/>
+        <result column="dznum" property="dznum" jdbcType="INTEGER"/>
+        <result column="movieid" property="movieid" jdbcType="INTEGER"/>
+
+
+    </resultMap>
+
+    <update id="update" parameterType="com.it.entity.Article">
+        update Article
+        <set>
+            <if test="lookcs &gt; 0">
+                lookcs=#{lookcs},
+            </if>
+
+            <if test="isjh!=null and isjh!=''">
+                isjh=#{isjh},
+            </if>
+            <if test="dznum!=null and dznum!=''">
+                dznum=#{dznum},
+            </if>
+
+        </set>
+        where id=#{id}
+    </update>
+
+    <insert id="add" parameterType="com.it.entity.Article">
+        insert into Article values(null,#{memberid},#{title},#{filename},#{content},#{savetime},#{lookcs},#{delstatus},#{sectionid},#{isjh},0,#{movieid})
+    </insert>
+
+
+        <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+        select * from Article where 1=1
+        <if test="key!='' and key!=null">
+            and title  like "%"#{key}"%"
+        </if>
+        <if test="sectionid!='' and sectionid!=null">
+            and sectionid=#{sectionid}
+        </if>
+        <if test="memberid!='' and memberid!=null">
+            and memberid=#{memberid}
+        </if>
+
+        order by id desc
+    </select>
+
+
+    <delete id="delete" parameterType="Integer">
+        delete from Article where id=#{id}
+    </delete>
+
+
+    <select id="findById" parameterType="Integer" resultType="com.it.entity.Article">
+        select * from Article where id=#{id}
+    </select>
+</mapper>

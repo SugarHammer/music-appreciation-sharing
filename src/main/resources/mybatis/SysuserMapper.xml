@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.SysuserDAO">
+
+    <resultMap type="com.it.entity.Sysuser" id="BaseResultMap">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="uname" property="uname" jdbcType="VARCHAR"/>
+        <result column="upass" property="upass" jdbcType="VARCHAR"/>
+        <result column="tname" property="tname" jdbcType="VARCHAR"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="utype" property="utype" jdbcType="VARCHAR"/>
+        <result column="delstatus" property="delstatus" jdbcType="VARCHAR"/>
+        <result column="filename" property="filename" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.it.entity.Sysuser">
+        insert into sysuser values (null,#{uname},#{upass},#{tname},#{tel},#{utype},#{delstatus},#{filename})
+    </insert>
+
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from sysuser where 1=1 and delstatus=0
+        <if test="uname!=null and uname!=''">
+            and uname=#{uname}
+        </if>
+        <if test="upass!=null and upass!=''">
+            and upass=#{upass}
+        </if>
+        <if test="utype!=null and utype!=''">
+            and utype=#{utype}
+        </if>
+        <if test="key!=null and key!=''">
+            and tname like "%"#{key}"%"
+        </if>
+        order by id desc
+    </select>
+
+    <select id="findById" parameterType="Integer" resultType="com.it.entity.Sysuser">
+    select * from sysuser where id=#{id}
+ </select>
+
+    <update id="update" parameterType="com.it.entity.Sysuser">
+        update sysuser
+        <set>
+            <if test="upass!=null and upass!=''">
+                upass=#{upass},
+            </if>
+            <if test="tname!=null and tname!=''">
+                tname=#{tname},
+            </if>
+            <if test="tel!=null and tel!=''">
+                tel=#{tel},
+            </if>
+
+            <if test="delstatus!=null and delstatus!=''">
+                delstatus=#{delstatus},
+            </if>
+
+            <if test="filename!=null and filename!=''">
+                filename=#{filename},
+            </if>
+
+        </set>
+        where id=#{id}
+    </update>
+</mapper>

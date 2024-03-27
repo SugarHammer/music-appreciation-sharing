@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="../layui/css/layui.css">
+
+    <link rel="stylesheet" href="static/css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="static/css/entypo.css">
+    <link rel="stylesheet" href="static/css/css.css">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/neon-core.css">
+    <link rel="stylesheet" href="static/css/neon-theme.css">
+    <link rel="stylesheet" href="static/css/neon-forms.css">
+    <link rel="stylesheet" href="static/css/custom.css">
+
+
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+
+    <link rel="stylesheet" href="../kindeditor/themes/default/default.css" />
+    <link rel="stylesheet" href="../kindeditor/plugins/code/prettify.css" />
+    <script charset="utf-8" src="../kindeditor/plugins/code/prettify.js"></script>
+    <script charset="utf-8" src="../kindeditor/kindeditor-all.js"></script>
+    <script charset="utf-8" src="../kindeditor/lang/zh-CN.js"></script>
+    <script>
+        KindEditor.ready(function(K) {
+            window.editor = K.create('#editor_id');
+        });
+    </script>
+    <script>
+        KindEditor.ready(function(K) {
+            K.create('textarea[name="note"]', {
+                width:"100%",
+                uploadJson : '../kindeditor/jsp/upload_json.jsp',
+                fileManagerJson : '../kindeditor/jsp/file_manager_json.jsp',
+                allowFileManager : true,
+                allowImageUpload : true,
+                autoHeightMode : true,
+                afterCreate : function() {this.loadPlugin('autoheight');},
+                afterBlur : function(){ this.sync(); }  //Kindeditor下获取文本框信息
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+
+<ol class="breadcrumb bc-3">
+    <li>
+        <a href="index.html"><i class="entypo-home"></i>首页</a>
+    </li>
+    <li>
+        <a href="javascript:;">歌曲管理</a>
+    </li>
+    <li class="active">
+
+        <strong>新增歌曲</strong>
+    </li>
+</ol>
+
+<!--<h3>-->
+    <!--&lt;!&ndash;<span class="label label-warning">New in 1.1.3</span>&ndash;&gt;-->
+    <!--类别列表-->
+    <!--&lt;!&ndash;<small>Try to resize the window to mobile width</small>&ndash;&gt;-->
+<!--</h3>-->
+<!--<br>-->
+
+<div class="row" id="app">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary" data-collapsed="0">
+
+            <div class="panel-heading">
+                <div class="panel-title">
+                    新增歌曲
+                </div>
+
+                <div class="panel-options">
+                    <a href="#sample-modal" data-toggle="modal" data-target="#sample-modal-dialog-1" class="bg"><i class="entypo-cog"></i></a>
+                    <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+                    <a href="#" data-rel="reload"><i class="entypo-arrows-ccw"></i></a>
+                    <a href="#" data-rel="close"><i class="entypo-cancel"></i></a>
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <form role="form" class="form-horizontal form-groups-bordered">
+
+
+                    <div class="form-group">
+                        <label for="filename" class="col-sm-3 control-label">歌曲图片</label>
+                        <div class="col-sm-5">
+                            <div class="layui-upload">
+                                <div class="layui-upload-list">
+                                    <input type="hidden" v-model="movie.filename" id="filename"/>
+                                    <img class="layui-upload-img" id="imgname" style="width: 92px;">
+                                    <p id="demoText"></p>
+                                    <button type="button" class="layui-btn" id="test1" style="background: #2b303a">上传图片</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="videoname" class="col-sm-3 control-label">歌曲资源</label>
+                        <div class="col-sm-5">
+                            <div class="layui-upload">
+                                <div class="layui-upload-list">
+                                    <input type="hidden" v-model="movie.videoname" id="videoname"/>
+
+                                    <p id="demoText1"></p>
+                                    <button type="button" class="layui-btn" id="test2"><i class="layui-icon"></i>歌曲资源</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="movie.name" class="col-sm-3 control-label">歌曲名</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="movie.name" id="movie.name" placeholder="歌曲名">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">类别</label>
+
+                        <div class="col-sm-5">
+                            <select class="form-control" v-model="movie.categoryid">
+                                <option value=""> 请选择类别</option>
+                                <option v-for="category in categorylist" :value="category.id"> {{category.name}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">地区</label>
+
+                        <div class="col-sm-5">
+                            <select class="form-control" v-model="movie.areaid">
+                                <option value=""> 请选择地区</option>
+                                <option v-for="area in arealist" :value="area.id"> {{area.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="movie.author" class="col-sm-3 control-label">歌手</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="movie.author" id="movie.author" placeholder="歌手">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年代</label>
+
+                        <div class="col-sm-5">
+                            <select class="form-control" v-model="movie.yeartime">
+                                <option value="2022">2022</option>
+                                <option value="2021">2021</option>
+                                <option value="2020">2020</option>
+                                <option value="2019">2019</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                                <option value="2010">2010</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">是否免费</label>
+
+                        <div class="col-sm-5">
+                            <select class="form-control" v-model="movie.isfree">
+                                <option value="是">是</option>
+                                <option value="否">否</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="playtime" class="col-sm-3 control-label">价格</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="movie.fee" id="movie.fee" placeholder="价格">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="playtime" class="col-sm-3 control-label">发布时间</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" v-model="movie.playtime" id="playtime" placeholder="发布时间">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="editor_id" class="col-sm-3 control-label">歌手详情</label>
+
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="editor_id" v-model="content" placeholder="歌手详情" style="width: 100%;height: 300px;"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <button type="button" class="btn btn-default" @click="add()">提交</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<link rel="stylesheet" href="static/css/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="static/css/rickshaw.min.css">
+
+<!-- Bottom Scripts -->
+<script src="static/js/main-gsap.js"></script>
+<script src="static/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/joinable.js"></script>
+<script src="static/js/resizeable.js"></script>
+<script src="static/js/neon-api.js"></script>
+<script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="static/js/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="static/js/jquery.sparkline.min.js"></script>
+<script src="static/js/d3.v3.js"></script>
+<script src="static/js/rickshaw.min.js"></script>
+<script src="static/js/raphael-min.js"></script>
+<script src="static/js/morris.min.js"></script>
+<script src="static/js/toastr.js"></script>
+<script src="static/js/neon-chat.js"></script>
+<script src="static/js/neon-custom.js"></script>
+<script src="static/js/neon-demo.js"></script>
+
+
+
+<script type="text/javascript" src="../axios/vue.js"></script>
+<script type="text/javascript" src="../axios/axios.min.js"></script>
+<script type="text/javascript" src="../axios/qs.js"></script>
+<script type="text/javascript" src="../axios/getUrlParams.js"></script>
+<script type="text/javascript" src="../layer/layer.js"></script>
+<script type="text/javascript" src="../laydate/laydate.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+
+<script>
+
+    var qs = Qs
+    var vmm =new Vue({
+        el:'#app',
+        data:{
+
+            movie:{
+                name:"",
+                filename:"",
+                videoname:"",
+                categoryid:"",
+                areaid:"",
+                author:"",
+                yeartime:"2021",
+                playtime:"",
+                isfree:"是",
+                fee:"0",
+                content:"",
+            },
+            arealist:[],
+            categorylist:[],
+
+        },
+        mounted(){
+            this.getcategorylist()
+            this.getarealist()
+            this.$nextTick(function(){
+
+                laydate.render({
+                    elem: '#playtime'
+                    ,done:function(data){
+                        vmm.movie.playtime = data
+                    }
+                });
+
+
+                var img = "";
+                layui.use(['form', 'layer', 'upload'], function () {
+                    $ = layui.jquery;
+                    var form = layui.form
+                        , layer = layui.layer
+                        , upload = layui.upload;
+
+                    //普通图片上传
+                    layui.use('upload', function () {
+                        var $ = layui.jquery
+                            , upload = layui.upload;
+
+                        //普通图片上传
+                        var uploadInst = upload.render({
+                            elem: '#test1'
+                            , url: 'uploadImg'
+                            , accept: 'images'
+                            ,theme:'#00365a'
+                            , size: 50000
+                            , before: function (obj) {
+
+                                obj.preview(function (index, file, result) {
+                                    $('#imgname').attr('src', result);
+                                });
+                            }
+                            , done: function (res) {
+                                //如果上传失败
+                                if (res.code > 0) {
+                                    return layer.msg('上传失败');
+                                }
+                                //上传成功
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+                                var fileupload = $(".image");
+                                fileupload.attr("value", res.data.src);
+                                // $("#filename").val(res.data.src)
+                                vmm.movie.filename = res.data.src
+                                img = res.data.src;
+                            }
+                            , error: function () {
+                                //演示失败状态，并实现重传
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                demoText.find('.demo-reload').on('click', function () {
+                                    uploadInst.upload();
+                                });
+                            }
+                        });
+
+
+
+
+                        //视频上传
+                        var uploadInst1 = upload.render({
+                            elem: '#test2'
+                            , url: 'uploadImg'
+                            , accept: 'audio'
+                            ,theme:'#00365a'
+                            // , size: 50000
+                            , before: function (obj) {
+                                obj.preview(function (index, file, result) {
+                                    // $('#imgname').attr('src', result);
+                                });
+                            }
+                            , done: function (res) {
+                                //如果上传失败
+                                if (res.code > 0) {
+                                    return layer.msg('上传失败');
+                                }
+                                //上传成功
+                                var demoText1 = $('#demoText1');
+                                demoText1.html('<span style="color: #4cae4c;">上传成功</span>');
+                                var fileupload = $(".image");
+                                fileupload.attr("value", res.data.src);
+                                // $("#filename").val(res.data.src)
+                                vmm.movie.videoname = res.data.src
+                                // img = res.data.src;
+                            }
+                            , error: function () {
+                                //演示失败状态，并实现重传
+                                var demoText1 = $('#demoText1');
+                                demoText1.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                demoText1.find('.demo-reload').on('click', function () {
+                                    uploadInst1.upload();
+                                });
+                            }
+                        });
+                    });
+                });
+            })
+        },
+        methods:{
+            add(){
+                this.movie.content = window.editor.html()
+                if(this.movie.filename==""){
+                    layer.msg("请上传歌曲图片",{icon:5})
+                    return;
+                }
+
+                if(this.movie.videoname==""){
+                    layer.msg("请上传歌曲资源",{icon:5})
+                    return;
+                }
+
+                if(this.movie.name==""){
+                    layer.msg("歌曲名不能为空",{icon:5})
+                    return;
+                }
+
+                if(this.movie.categoryid==""){
+                    layer.msg("请选择类别",{icon:5})
+                    return;
+                }
+
+                if(this.movie.areaid==""){
+                    layer.msg("请选择地区",{icon:5})
+                    return;
+                }
+
+                if(this.movie.author==""){
+                    layer.msg("歌手不能为空",{icon:5})
+                    return;
+                }
+
+                if(this.movie.yeartime==""){
+                    layer.msg("年代不能为空",{icon:5})
+                    return;
+                }
+                if(this.movie.isfree=='null'){
+                    layer.msg("是否付费不能为空",{icon:5})
+                    return;
+                }
+
+                if(this.movie.fee == ''){
+                    layer.msg("免费歌曲输入0，收费歌曲输入金额",{icon:5})
+                    return;
+                }
+
+                if(this.movie.playtime==""){
+                    layer.msg("发布时间不能为空",{icon:5})
+                    return;
+                }
+
+                axios.post('movieAdd',qs.stringify({
+                    filename:this.movie.filename,
+                    videoname:this.movie.videoname,
+                    name:this.movie.name,
+                    categoryid:this.movie.categoryid,
+                    areaid:this.movie.areaid,
+                    author:this.movie.author,
+                    yeartime:this.movie.yeartime,
+                    playtime:this.movie.playtime,
+                    content:this.movie.content,
+                    isfree:this.movie.isfree,
+                    fee:this.movie.fee,
+                    memberid:'0',
+                    shstatus:'通过'
+                })).then(response =>{
+                    location.replace("movielist.html")
+                }).catch(error =>{
+                })
+            },
+
+            getcategorylist(){
+                axios.post('categoryList',qs.stringify({
+                })).then(response =>{
+                    this.categorylist = response.data.list
+                }).catch(error =>{
+                })
+            },
+
+            getarealist(){
+                axios.post('areaList',qs.stringify({
+                })).then(response =>{
+                    this.arealist = response.data.list
+                }).catch(error =>{
+                })
+            },
+
+
+        },
+    })
+
+</script>
+
+
+</body>
+</html>

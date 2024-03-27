@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .submitbtn{
+            height: 70px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #e90101;
+            border: none;
+            padding: 0 50px;
+            width: 100%;
+            text-align: center;
+            line-height: 70px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="iframetop">
+
+    <!--<nav class="mobile-menu">-->
+        <!--<div class="inner">-->
+            <!--<div class="mobile-search">-->
+                <!--<h6>Type movie or tv show name to find it</h6>-->
+                <!--<form>-->
+                    <!--<input type="search" placeholder="Search here">-->
+                    <!--<input type="submit" value="FIND">-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end mobile-search &ndash;&gt;-->
+            <!--<a href="account.html" class="button-account"><i class="lni lni-user"></i> ACCOUNT </a>-->
+            <!--&lt;!&ndash; end button-account &ndash;&gt;-->
+            <!--<div class="site-menu">-->
+                <!--<ul>-->
+                    <!--<li><a href="index.html">HOME</a></li>-->
+                    <!--<li><a href="movies.html">MOVIES</a></li>-->
+                    <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+                    <!--<li><a href="tips.html">TIPS</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end inner &ndash;&gt;-->
+    <!--</nav>-->
+
+    <!--<nav class="navbar">-->
+        <!--<div class="logo"><a href="index.html"> <img src="images/logo.png" alt="Image"> </a></div>-->
+        <!--&lt;!&ndash; end logo &ndash;&gt;-->
+        <!--<div class="site-menu">-->
+            <!--<ul>-->
+                <!--<li><a href="index.html">HOME</a></li>-->
+                <!--<li><a href="movies.html">MOVIES</a></li>-->
+                <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+                <!--<li><a href="tips.html">TIPS</a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+        <!--<div class="user-menu">-->
+            <!--<div class="navbar-search"><i class="lni lni-search-alt"></i></div>-->
+            <!--&lt;!&ndash; end navbar-search &ndash;&gt;-->
+            <!--<div class="navbar-notify"><i class="lni lni-alarm"></i><b>2</b>-->
+                <!--<div class="notify-dropdown">-->
+                    <!--<div class="total-notify">-->
+                        <!--<h6>Notification</h6>-->
+                        <!--<span>3</span></div>-->
+                    <!--&lt;!&ndash; end total-notify &ndash;&gt;-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<p><u>Marcus</u> download 2000+ Simple Line Icons and Explore</p>-->
+                            <!--<span>2 Days</span></li>-->
+                        <!--<li>-->
+                            <!--<p>Added new movie <u>Afterlife</u> Cheatsheet to Start Using With Your Projects.</p>-->
+                            <!--<span>3 Days</span></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; end notify-dropdown &ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash; end navbar-notify &ndash;&gt;-->
+            <!--<div class="navbar-account"><a href="account.html">ACCOUNT <i class="lni lni-user"></i> </a></div>-->
+            <!--&lt;!&ndash; end navbar-account &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end user-menu &ndash;&gt;-->
+        <!--<div class="hamburger-menu">-->
+            <!--<button class="hamburger">-->
+                <!--<svg width="45" height="45" viewBox="0 0 100 100">-->
+                    <!--<path class="line line1"-->
+                          <!--d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>-->
+                    <!--<path class="line line2" d="M 20,50 H 80"/>-->
+                    <!--<path class="line line3"-->
+                          <!--d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>-->
+                <!--</svg>-->
+            <!--</button>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; end hamburger-menu &ndash;&gt;-->
+    <!--</nav>-->
+
+
+</div>
+<!-- end mobile-menu -->
+<!-- end navbar -->
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center">注册</h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+
+    <section class="content-section" data-background="images/section-pattern01.png">
+        <div class="container" id="app">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="membership">
+                        <h6>注册</h6>
+                        <p>请在下方填写注册信息
+                        </p>
+                        <form>
+
+                            <div class="form-group">
+                                <div class="layui-upload" style="margin-bottom: 30px;">
+                                    <div class="layui-upload-list">
+
+                                        <input type="hidden" v-model="filename" id="filename"/>
+                                        <img class="layui-upload-img" id="imgname" style="width: 92px;">
+                                        <p id="demoText"></p>
+                                    </div>
+                                    <button type="button" class="layui-btn" id="test1" style="width: 150px;">上传图片</button>
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="text" v-model="member.uname" @blur="checkUname()" placeholder="用户名">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <input type="password" v-model="member.upass" placeholder="密码">
+                            </div>
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <input type="text" v-model="member.tname" placeholder="姓名">
+                            </div>
+
+
+                            <div class="form-group">
+                                <select v-model="member.sex" style="width: 100%">
+                                    <option value="男">男</option>
+                                    <option value="女">女</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" v-model="member.tel" placeholder="电话">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" v-model="member.qq" placeholder="QQ">
+
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" v-model="member.email" placeholder="邮箱">
+
+                            </div>
+
+                            <div class="form-group">
+                                <a class="submitbtn" @click="add" >提交</a>
+                            </div>
+
+                            <div class="or">
+                                <span>or</span>
+                                <p>已有帐号请点击下方链接登录</p>
+                                <a href="login.html" style="width: 100%">
+                                    <small>登录</small>
+                                </a>
+                            </a>
+                            </div>
+                            <!-- end or -->
+                        </form>
+                    </div>
+                    <!-- end membership -->
+                </div>
+                <!-- end col-7 -->
+                <div class="col-lg-5">
+                    <figure class="side-image">
+                        <img src="images/side-image02.png" alt="Image">
+                    </figure>
+                    <!-- end side-image -->
+                </div>
+                <!-- end col-5 -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="bottom-bar" id="iframefoot">
+        </div>
+    </footer>
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+
+    var qs = Qs
+    var vmm = new Vue({
+        el:"#app",
+        data:{
+            member:{
+                uname: "",
+                upass: "",
+                filename: "icon1.png",
+                tname: "",
+                sex: "男",
+                tel: "",
+                qq: "",
+                email: "",
+            },
+        },
+        mounted() {
+            this.$nextTick(function () {
+                var img = "";
+                layui.use(['form', 'layer', 'upload'], function () {
+                    $ = layui.jquery;
+                    var form = layui.form
+                        , layer = layui.layer
+                        , upload = layui.upload;
+
+                    //普通图片上传
+                    layui.use('upload', function () {
+                        var $ = layui.jquery
+                            , upload = layui.upload;
+
+                        //普通图片上传
+                        var uploadInst = upload.render({
+                            elem: '#test1'
+                            , url: 'admin/uploadImg'
+                            , accept: 'images'
+                            , theme: '#00365a'
+                            , size: 50000
+                            , before: function (obj) {
+
+                                obj.preview(function (index, file, result) {
+                                    $('#imgname').attr('src', result);
+                                });
+                            }
+                            , done: function (res) {
+                                //如果上传失败
+                                if (res.code > 0) {
+                                    return layer.msg('上传失败');
+                                }
+                                //上传成功
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+                                var fileupload = $(".image");
+                                fileupload.attr("value", res.data.src);
+                                // $("#filename").val(res.data.src)
+                                vmm.member.filename = res.data.src
+                                img = res.data.src;
+                            }
+                            , error: function () {
+                                //演示失败状态，并实现重传
+                                var demoText = $('#demoText');
+                                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                                demoText.find('.demo-reload').on('click', function () {
+                                    uploadInst.upload();
+                                });
+                            }
+                        });
+                    });
+                });
+            })
+        },
+        methods:{
+            checkUname(){
+                axios.post('checkUname',qs.stringify({
+                    uname:this.member.uname,
+                })).then(response =>{
+                    if(response.data.data==400){
+                        layer.msg("用户已被注册，请更换", {icon: 5})
+                        this.member.uname = ""
+                    }
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+            add() {
+                if (this.member.uname == "") {
+                    layer.msg("用户名不能为空", {icon: 5})
+                    return false;
+                }
+                if (this.member.upass == "") {
+                    layer.msg("密码不能为空", {icon: 5})
+                    return false;
+                }
+
+                if (this.member.tname == "") {
+                    layer.msg("姓名不能为空", {icon: 5})
+                    return false;
+                }
+
+                if(this.member.tel=="" || !/^[1][3,4,5,7,8][0-9]{9}$/.test(this.member.tel)){
+                    layer.msg("电话号码格式输入错误", {icon: 5})
+                    return false;
+                }
+
+                if(this.member.qq==""){
+                    layer.msg("qq不能为空", {icon: 5})
+                    return false;
+                }
+                if(this.member.email==""){
+                    layer.msg("邮箱不能为空", {icon: 5})
+                    return false;
+                }
+                axios.post('Register', qs.stringify({
+                    uname: this.member.uname,
+                    upass: this.member.upass,
+                    tname: this.member.tname,
+                    sex: this.member.sex,
+                    tel: this.member.tel,
+                    qq: this.member.qq,
+                    email: this.member.email,
+                    filename: this.member.filename,
+                })).then(response => {
+                    layer.msg("注册成功", {icon: 6})
+                    this.member.uname = ""
+                    this.member.upass = ""
+                    this.member.tname = ""
+                    this.member.tel = ""
+                    this.member.qq = ""
+                    this.member.email = ""
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+        }
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>

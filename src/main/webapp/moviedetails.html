@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+    <!-- CSS FILES -->
+    <link href="layui/css/layui.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        a.commentsubmit{
+            height: 70px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            background: #e90101;
+            border: none;
+            line-height: 70px;
+            padding: 0 50px;
+        }
+
+
+        .layui-inline ul{
+            display: flex;
+            padding: 0px;
+        }
+
+
+        .comments .comments-list li .comment h6 .layui-inline{
+            margin-bottom: 7px;
+        }
+
+        .comments .comments-list li .comment h6 .layui-inline ul li{
+            padding: 0px;
+            margin: 0px;
+            border-bottom: 0px;
+        }
+
+        .comments .comments-list li{
+            padding: 0px;
+            margin: 0px;
+            margin-bottom: 30px;
+            border-bottom: 0px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="iframetop">
+
+    <!--<nav class="mobile-menu">-->
+    <!--<div class="inner">-->
+    <!--<div class="mobile-search">-->
+    <!--<h6>Type movie or tv show name to find it</h6>-->
+    <!--<form>-->
+    <!--<input type="search" placeholder="Search here">-->
+    <!--<input type="submit" value="FIND">-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end mobile-search &ndash;&gt;-->
+    <!--<a href="account.html" class="button-account"><i class="lni lni-user"></i> ACCOUNT </a>-->
+    <!--&lt;!&ndash; end button-account &ndash;&gt;-->
+    <!--<div class="site-menu">-->
+    <!--<ul>-->
+    <!--<li><a href="index.html">HOME</a></li>-->
+    <!--<li><a href="movies.html">MOVIES</a></li>-->
+    <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+    <!--<li><a href="tips.html">TIPS</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end inner &ndash;&gt;-->
+    <!--</nav>-->
+
+    <!--<nav class="navbar">-->
+    <!--<div class="logo"><a href="index.html"> <img src="images/logo.png" alt="Image"> </a></div>-->
+    <!--&lt;!&ndash; end logo &ndash;&gt;-->
+    <!--<div class="site-menu">-->
+    <!--<ul>-->
+    <!--<li><a href="index.html">HOME</a></li>-->
+    <!--<li><a href="movies.html">MOVIES</a></li>-->
+    <!--<li><a href="tv-shows.html">TV SHOWS</a></li>-->
+    <!--<li><a href="tips.html">TIPS</a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end site-menu &ndash;&gt;-->
+    <!--<div class="user-menu">-->
+    <!--<div class="navbar-search"><i class="lni lni-search-alt"></i></div>-->
+    <!--&lt;!&ndash; end navbar-search &ndash;&gt;-->
+    <!--<div class="navbar-notify"><i class="lni lni-alarm"></i><b>2</b>-->
+    <!--<div class="notify-dropdown">-->
+    <!--<div class="total-notify">-->
+    <!--<h6>Notification</h6>-->
+    <!--<span>3</span></div>-->
+    <!--&lt;!&ndash; end total-notify &ndash;&gt;-->
+    <!--<ul>-->
+    <!--<li>-->
+    <!--<p><u>Marcus</u> download 2000+ Simple Line Icons and Explore</p>-->
+    <!--<span>2 Days</span></li>-->
+    <!--<li>-->
+    <!--<p>Added new movie <u>Afterlife</u> Cheatsheet to Start Using With Your Projects.</p>-->
+    <!--<span>3 Days</span></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end notify-dropdown &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end navbar-notify &ndash;&gt;-->
+    <!--<div class="navbar-account"><a href="account.html">ACCOUNT <i class="lni lni-user"></i> </a></div>-->
+    <!--&lt;!&ndash; end navbar-account &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end user-menu &ndash;&gt;-->
+    <!--<div class="hamburger-menu">-->
+    <!--<button class="hamburger">-->
+    <!--<svg width="45" height="45" viewBox="0 0 100 100">-->
+    <!--<path class="line line1"-->
+    <!--d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058"/>-->
+    <!--<path class="line line2" d="M 20,50 H 80"/>-->
+    <!--<path class="line line3"-->
+    <!--d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942"/>-->
+    <!--</svg>-->
+    <!--</button>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; end hamburger-menu &ndash;&gt;-->
+    <!--</nav>-->
+
+
+</div>
+<!-- end mobile-menu -->
+<!-- end navbar -->
+
+
+<div id="app">
+
+    <main>
+        <header class="page-header single" data-background="images/movie-poster-bg.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="video-player">
+                            <a href="javascript:history.go(-1)"  class="back-btn"><i class="lni lni-chevron-left"></i> BACK</a>
+                            <!--<video :src="['upload/'+movie.videoname+'#t=1']" poster="images/movie-poster.jpg" controls playsinline></video>-->
+                            <video id="myVideo" :src="['upload/'+movie.videoname+'#t=1']" controls></video>
+
+                        </div>
+                        <!-- end video-player -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end col-12 -->
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </header>
+        <!-- end header -->
+        <section class="content-section" data-background="#ffffff">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="movie-info-box">
+                            <h4 class="name" style="font-size: 40px;">{{movie.name}}</h4>
+                            <ul class="features">
+                                <li>
+                                    <div class="rate">
+                                        <svg class="circle-chart" viewBox="0 0 30 30" width="40" height="40" fill="transparent"  xmlns="http://www.w3.org/2000/svg">
+                                            <circle class="circle-chart__background" stroke="#eee" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                                            <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                                        </svg>
+                                        <b>{{movie.score}}</b> 评分 </div>
+                                    <!-- end rate -->
+                                </li>
+                                <li>
+                                    <div class="year">{{movie.yeartime}}</div>
+                                </li>
+                                <!--<li>-->
+                                    <!--<div class="hd">1080 <b>HD</b></div>-->
+                                <!--</li>-->
+                                <!--<li>-->
+                                    <!--<div class="tags">Romance, Action</div>-->
+                                <!--</li>-->
+                            </ul>
+                            <p class="description" v-html="movie.content"></p>
+                            <a href="javascript:;" @click="collectadd" class="add-btn"><i class="layui-icon">&#xe67b;</i>收藏</a>
+                            <a href="javascript:;" @click="tobbsadd" class="add-btn"><i class="layui-icon">&#xe641;</i>去发帖</a>
+                            <a v-if="movie.isfree == '否'" href="javascript:;" @click="topay" class="add-btn"><i class="layui-icon">&#xe65e;</i>{{movie.fee}}元  立即购买</a>
+                            <!--<div class="rate-box">-->
+                                <!--<a href="#"><i class="lni lni-thumbs-up"></i></a>-->
+                                <!--<a href="#"><i class="lni lni-thumbs-down"></i></a>-->
+                                <!--&lt;!&ndash;<strong>61% liked this film</strong>&ndash;&gt;-->
+                            <!--</div>-->
+                        </div>
+                        <!-- end movie-info-box -->
+                    </div>
+                    <!-- end col-8 -->
+                    <div class="col-lg-4">
+                        <div class="movie-side-info-box">
+                            <figure><img :src="['upload/'+movie.filename]" alt="Image"></figure>
+                            <ul>
+                                <li><strong>类别: </strong> {{movie.category.name}}</li>
+                                <li><strong>地区:</strong> {{movie.area.name}}</li>
+                                <li><strong>歌手:</strong> {{movie.author}}</li>
+                                <li><strong>发布时间:</strong> {{movie.playtime}}</li>
+                                <li><a href="javascript:;" @click="dzrecordadd"><i class="layui-icon">&#xe6c6;</i></a> {{movie.zan}}</li>
+                                <li v-if="movie.isfree == '是'"><span class="layui-badge layui-bg">免费</span></li>
+                                <li v-if="movie.isfree == '否'"><span class="layui-badge layui-bg-orange">付费</span></li>
+
+                            </ul>
+                        </div>
+                        <!-- end movie-side-info-box -->
+                    </div>
+                    <!-- end col-4 -->
+                </div>
+                <!-- end col-12 -->
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end content-section -->
+        <section class="content-section" data-background="#111111">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title light">
+                            <!--<h6>FIND ANYWHERE ELSE</h6>-->
+                            <h4>相关歌曲</h4>
+                        </div>
+                        <!-- end section-title -->
+                    </div>
+                    <!-- end col-12 -->
+
+
+
+                    <div v-for="categorymovie in categorymovielist" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="video-thumb light">
+                            <figure class="video-image" style="height: 250px;"> <a :href="['moviedetails.html?id='+categorymovie.id]"><img :src="['upload/'+categorymovie.filename]" alt="Image" style="height:100%"></a>
+                                <div class="circle-rate">
+                                    <svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                                        <circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>
+                                        <circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>
+                                    </svg>
+                                    <b>{{categorymovie.score}}</b> </div>
+                                <!-- end circle-rate -->
+                                <div class="hd">1080 <b>HD</b></div>
+                                <!-- end hd -->
+                            </figure>
+                            <div class="video-content"> <small class="range">{{categorymovie.yeartime}}</small>
+                                <ul class="tags">
+                                    <li>{{categorymovie.category.name}}</li>
+                                </ul>
+                                <!--<div class="age">PG13</div>-->
+                                <!-- end age -->
+                                <h3 class="name"><a :href="['moviedetails.html?id='+categorymovie.id]">{{categorymovie.name}}</a></h3>
+
+                            </div>
+                            <!-- end video-content -->
+                        </div>
+                        <!-- end video-thumb -->
+                    </div>
+
+
+
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+
+                    <!-- end col-2 -->
+                    <div class="col-12 text-center"> <a href="movielist.html" class="custom-button">浏览所有的歌曲</a> </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end content-section -->
+        <section class="content-section" data-background="#ffffff">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <!--<h6>SHARE WITH US</h6>-->
+                            <h3>评论</h3>
+                        </div>
+                        <!-- end section-title -->
+                    </div>
+                    <!-- end col-12 -->
+                    <div class="col-12">
+                        <div class="comments">
+                            <ul class="comments-list">
+                                <li v-for="comment in commentlist">
+                                    <figure class="avatar"><img :src="['upload/'+comment.member.filename]" alt="Image"></figure>
+                                    <div class="comment">
+                                        <h6>{{comment.member.tname}} <div :id="['rating'+comment.id]"></div></h6>
+                                        <p>{{comment.content}}</p>
+                                        <p v-if="comment.hfcontent!=null && comment.hfcontent!=''">
+                                            <span class="layui-badge"> 回复:</span>{{comment.hfcontent}}</p>
+                                        <small>{{comment.savetime}}</small>
+                                        <!--<a href="#">REPLY</a>-->
+
+                                    </div>
+                                    <!-- end comment -->
+                                </li>
+                                <!--<li>-->
+                                    <!--<figure class="avatar"><img src="images/avatar01.jpg" alt="Image"></figure>-->
+                                    <!--<div class="comment">-->
+                                        <!--<h6>Jenny Klausein</h6>-->
+                                        <!--<p>Recommended next action: Personalize the "to:" field Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw.</p>-->
+                                        <!--<small>November 25, 2020</small>-->
+                                        <!--<a href="#">REPLY</a>-->
+                                    <!--</div>-->
+                                    <!--&lt;!&ndash; end comment &ndash;&gt;-->
+                                    <!--<ul class="comments-list">-->
+                                        <!--<li>-->
+                                            <!--<figure class="avatar"><img src="images/avatar01.jpg" alt="Image"></figure>-->
+                                            <!--<div class="comment">-->
+                                                <!--<h6>Jenny Klausein</h6>-->
+                                                <!--<p>Characteristics you and your peers share Industry Professional Services Your industry was either self reported or predicted using natural language processing techniques. You can update it in your settings.Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw.</p>-->
+                                                <!--<small>November 25, 2020</small>-->
+                                                <!--<a href="#">REPLY</a>-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash; end comment &ndash;&gt;-->
+                                        <!--</li>-->
+                                        <!--<li>-->
+                                            <!--<figure class="avatar"><img src="images/avatar01.jpg" alt="Image"></figure>-->
+                                            <!--<div class="comment">-->
+                                                <!--<h6>Jenny Klausein</h6>-->
+                                                <!--<p>Gravity letters it amongst herself dearest an windows by. Wooded ladies she basket season age her uneasy saw.</p>-->
+                                                <!--<small>November 25, 2020</small>-->
+                                                <!--<a href="#">REPLY</a>-->
+                                            <!--</div>-->
+                                            <!--&lt;!&ndash; end comment &ndash;&gt;-->
+                                        <!--</li>-->
+                                    <!--</ul>-->
+                                <!--</li>-->
+                            </ul>
+                            <div class="comments-form">
+                                <h5>请在下方填写评论内容</h5>
+
+                                <div class="form-group">
+                                    <div id="test2" style="white-space: nowrap"></div>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <textarea placeholder="内容" v-model="content" style="color: grey"></textarea>
+                                </div>
+                                <!-- end form-group -->
+                                <div class="form-group">
+                                    <!--<input type="submit" value="Post Comment">-->
+                                    <a class="commentsubmit" href="javascript:;" @click="commentadd()">提交</a>
+
+                                </div>
+                                <!-- end form-group -->
+                            </div>
+                            <!-- end comments-form -->
+                        </div>
+                        <!-- end comments -->
+                    </div>
+                    <!-- end col-12 -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end content-section -->
+        <footer class="footer">
+            <!-- end container -->
+            <div class="bottom-bar" id="iframefoot">
+                <!-- end container -->
+            </div>
+            <!-- end bottom-bar -->
+        </footer>
+        <!-- end footer -->
+    </main>
+
+
+</div>
+<!-- end slider -->
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript">
+
+    var qs = Qs
+    var id = UrlParam.paramValues("id").toString()
+    var vmm = new Vue({
+        el:"#app",
+        data:{
+            movie:{
+                id:id,
+                name:"",
+                filename:"",
+                videoname:"",
+                categoryid:"",
+                areaid:"",
+                author:"",
+                yeartime:"",
+                playtime:"",
+                content:"",
+                cs:"",
+                score:"",
+                category:{
+                    name:"",
+                },
+                area:{
+                    name:"",
+                },
+            },
+            categorymovielist:[],
+            sessionmember:"",
+            score:5,
+            content:"",
+            commentlist:[],
+
+        },
+        mounted(){
+            this.getshow()
+            this.getsessionmember()
+
+            //获取视频DOM元素
+            var myVideo = document.getElementById("myVideo");
+
+            myVideo.oncanplay = function () {
+                //console.log("准备就绪");
+            };
+            //监听播放开始
+            myVideo.addEventListener('play', function () {
+                if (vmm.sessionmember == "") {
+                    location.replace("login.html");
+                    return;
+                }else{
+                    vmm.updateplaycs()
+                }
+                //console.log("开始播放");
+            });
+
+            //监听播放结束
+            myVideo.addEventListener('pause', function () {
+                //console.log("播放暂停");
+            });
+
+            //监听播放结束
+            myVideo.addEventListener('ended', function () {
+                //console.log("播放结束");
+            });
+
+            //使用事件监听方式捕捉事件， 此事件可作为实时监测video 播放状态
+            myVideo.addEventListener("timeupdate", function () {
+                var timeDisplay;
+                //用秒数来显示当前播放进度
+                timeDisplay = Math.floor(myVideo.currentTime);
+                console.log(Math.floor(myVideo.currentTime))
+
+                //当视频播放到 4s的时候做处理
+
+            }, false);
+
+
+
+            this.$nextTick(function () {
+                layui.use(['rate'], function () {
+                    var rate = layui.rate;
+                    //基础效果
+                    rate.render({
+                        elem: '#test2'
+                        , value: vmm.score
+                        , setText: function (value) {
+                            vmm.score = value
+                        }
+                    })
+                })
+
+
+            })
+
+        },
+        methods:{
+            topay(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if(response.data.data==200){
+
+                        axios.post('checkIsBuy', qs.stringify({
+                            movieid:this.movie.id,
+                        })).then(response => {
+                            if(response.data.data==200){
+                                layer.open({
+                                    title:"请输入支付信息",
+                                    type:2,
+                                    area:['600px','300px'],
+                                    maxmin:true,
+                                    content:"pay.html?movieid="+id+"&fee="+this.movie.fee
+                                })
+                            }else{
+                                layer.alert('你已购买过该歌曲，无需再次购买', function(index){
+                                    layer.close(index);
+                                });
+                            }
+                        }).catch(error => {
+                            console.log(error)
+                        })
+
+                }else{
+                    location.replace("login.html")
+                }
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+            dzrecordadd(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if(response.data.data==200){
+                    axios.post('dzrecordAdd', qs.stringify({
+                        movieid:this.movie.id
+                    })).then(response => {
+                        if(response.data.data==200){
+                            this.getshow()
+                            layer.msg("点赞成功！",{icon:6})
+                        }else{
+                            layer.msg("你已对该歌曲点过赞！",{icon:5})
+                        }
+                    }).catch(error => {
+                        console.log(error)
+                    })
+                    }else{
+                        layer.alert("请先登录!");
+                    }
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+
+            tobbsadd(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if(response.data.data==200){
+                        location.replace("tzadd.html?movieid="+this.movie.id)
+                    }else{
+                        layer.alert("请先登录!");
+                    }
+            }).catch(error => {
+                    console.log(error)
+            })
+            },
+            collectadd(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if(response.data.data==200){
+
+                        if(this.movie.isfree == "是"){
+
+                            layer.open({
+                                title:"请选择要加入的歌单",
+                                type:2,
+                                area:['600px','300px'],
+                                maxmin:true,
+                                content:"sheetschoose.html?movieid="+id
+                            })
+
+                            // axios.post('collectAdd', qs.stringify({
+                            //     movieid:this.movie.id
+                            // })).then(response => {
+                            //
+                            //
+                            //     if(response.data.data==200){
+                            //         layer.msg("收藏成功！",{icon:6})
+                            //     }else{
+                            //         layer.msg("已存在收藏记录！",{icon:5})
+                            //     }
+                            //
+                            //
+                            // }).catch(error => {
+                            //     console.log(error)
+                            // })
+
+                        }else{
+
+                            axios.post('checkIsBuy', qs.stringify({
+                                movieid:this.movie.id,
+                            })).then(response => {
+                                if(response.data.data==200){
+
+                                    layer.alert('该歌曲为付费歌曲', function(index){
+                                        layer.close(index);
+                                        window.location.href="moviedetails.html?id="+id
+                                    });
+
+                                }else{
+                                    layer.open({
+                                        title:"请选择要加入的歌单",
+                                        type:2,
+                                        area:['600px','300px'],
+                                        maxmin:true,
+                                        content:"sheetschoose.html?movieid="+id
+                                    })
+                                }
+                            }).catch(error => {
+                                console.log(error)
+                            })
+
+                        }
+                    }else{
+                        location.replace("login.html")
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+            getcommentlist(){
+                axios.post('admin/commentList',qs.stringify({
+                    movieid:this.movie.id,
+                })).then(response =>{
+                    this.commentlist = response.data.list
+
+                    this.$nextTick(function () {
+
+                        if(this.commentlist.length>0){
+                            layui.use(['rate'], function () {
+                                var rate = layui.rate;
+                                for (var i = 0; i < vmm.commentlist.length; i++) {
+                                    rate.render({
+                                        elem: '#rating' + vmm.commentlist[i].id
+                                        , value: vmm.commentlist[i].score
+                                        , half: true //开启半星
+                                        , readonly: true
+                                    });
+                                }
+                            })
+                        }
+
+
+                    })
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+            commentadd(){
+                axios.post('checkmember',qs.stringify({
+                })).then(response =>{
+                    if(response.data.data==200){
+                        if(this.content==""){
+                            layer.msg("评论内容不能为空",{icon:5})
+                            return;
+                        }
+                        axios.post('commentAdd',qs.stringify({
+                            movieid:this.movie.id,
+                            content:this.content,
+                            score:this.score,
+                        })).then(response =>{
+                            if(response.data.data==200){
+                                layer.msg("评论成功！",{icon:6})
+                            }else if(response.data.data==300){
+                                layer.msg("没有播放记录，评论失败",{icon:5})
+                            }else{
+                                layer.msg("已评论过了，操作失败",{icon:5})
+                            }
+                            this.getcommentlist()
+                        }).catch(error =>{
+                            console.log(error)
+                        })
+                    }else{
+                        location.replace("login.html")
+                    }
+                })
+
+            },
+            updateplaycs(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if(response.data.data==200){
+                        if(this.movie.isfree == "是"){
+                                    axios.post('playrecordAdd', qs.stringify({
+                                        movieid:this.movie.id
+                                    })).then(response => {
+                                    }).catch(error => {
+                                        console.log(error)
+                                    })
+                        }else{
+
+                            axios.post('checkIsBuy', qs.stringify({
+                                movieid:this.movie.id,
+                            })).then(response => {
+                                if(response.data.data==200){
+
+                                    layer.alert('该歌曲为付费歌曲', function(index){
+                                        layer.close(index);
+                                        window.location.href="moviedetails.html?id="+id
+                                    });
+
+                                }else{
+                                    axios.post('playrecordAdd', qs.stringify({
+                                        movieid:this.movie.id
+                                    })).then(response => {
+                                    }).catch(error => {
+                                        console.log(error)
+                                    })
+                                }
+                            }).catch(error => {
+                                console.log(error)
+                            })
+
+                        }
+
+
+
+
+                    }else{
+                        location.replace("login.html")
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+            getsessionmember(){
+                axios.post('checkmember', qs.stringify({
+                })).then(response => {
+                    if(response.data.data==200){
+                        this.sessionmember = response.data.sessionmember
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+            getshow() {
+                axios.post('admin/movieShow', qs.stringify({
+                    id:this.movie.id,
+                })).then(response => {
+                    this.movie = response.data.movie
+                    this.getcategorymovie()
+                    this.getcommentlist()
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            getcategorymovie() {
+                axios.post('admin/movieList', qs.stringify({
+                    key1:this.movie.categoryid,
+                })).then(response => {
+
+                    this.categorymovielist = response.data.list
+
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+
+
+
+
+
+        }
+    })
+
+
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+    }
+</script>
+</body>
+</html>

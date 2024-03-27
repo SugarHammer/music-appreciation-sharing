@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="vuemusicshareptboot:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>vuemusicshareptboot</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="vuemusicshareptboot.war">
+      <element id="artifact" artifact-name="vuemusicshareptboot:war exploded" />
+    </root>
+  </artifact>
+</component>

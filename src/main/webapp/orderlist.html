@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#e90101"/>
+    <title>音乐鉴赏与分享平台</title>
+    <meta name="author" content="Themezinho">
+    <meta name="description" content="For all kind of video streaming website">
+    <meta name="keywords"
+          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
+
+    <!-- SOCIAL MEDIA META -->
+    <meta property="og:description" content="digiflex | Online Movie Streaming">
+    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
+    <meta property="og:site_name" content="digiflex">
+    <meta property="og:title" content="digiflex">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://www.themezinho.net/digiflex">
+
+    <!-- TWITTER META -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@digiflex">
+    <meta name="twitter:creator" content="@digiflex">
+    <meta name="twitter:title" content="digiflex">
+    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
+    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
+
+    <!-- FAVICON FILES -->
+
+    <link rel="stylesheet" href="layui/css/layui.css">
+
+    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
+    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
+    <link href="ico/favicon.png" rel="shortcut icon">
+
+
+    <!-- CSS FILES -->
+    <link rel="stylesheet" href="css/lineicons.css">
+    <link rel="stylesheet" href="css/fancybox.min.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="layui/css/layui.css">
+</head>
+<body>
+
+<div id="iframetop">
+</div>
+
+<header class="page-header">
+    <div class="container">
+        <h4 style="text-align: center">我的订单</h4>
+    </div>
+</header>
+
+
+
+<!-- end slider -->
+<main>
+    <section class="content-section">
+        <div class="container" id="app">
+                <div class="col-12">
+                    <div class="section-title">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 50px;">
+                            <legend>我的订单</legend>
+                        </fieldset>
+                    </div>
+
+                    </div>
+            <div>
+                <div class="layui-row">
+                    <div class="layui-row layui-col-space5">
+                        <table class="layui-table" lay-size="sm">
+                            <colgroup>
+                                <col width="150">
+                                <col width="200">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>订单号</th>
+                                <th>歌曲</th>
+                                <th>费用</th>
+                                <th>付款状态</th>
+                                <th>订单时间</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(ddinfo,i) in ddinfolist">
+                                <td>{{ddinfo.ddno}}</td>
+                                <td>{{ddinfo.movie.name}}</td>
+                                <td>{{ddinfo.fee}}元</td>
+                                <td>{{ddinfo.fkstatus}}</td>
+                                <td>{{ddinfo.savetime}}</td>
+                            </tr>
+                            <Tr><Td colspan="5"><div id="demo1" style="text-align: center"></div></Td></Tr>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+                </div>
+
+
+
+
+
+                <!-- end col-12 -->
+                <!-- end col-2 -->
+                <!--<div v-for="(collect,i) in collectlist" class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6">-->
+                    <!--<div class="video-thumb">-->
+                        <!--<figure class="video-image" style="height: 150px;"> <a href="#"><img :src="['upload/'+collect.movie.filename]" alt="Image" style="height: 100%"></a>-->
+                            <!--<div class="circle-rate">-->
+                                <!--<svg class="circle-chart" viewBox="0 0 30 30" width="100" height="100" xmlns="http://www.w3.org/2000/svg">-->
+                                    <!--<circle class="circle-chart__background" stroke="#2f3439" stroke-width="2" fill="none" cx="15" cy="15" r="14"></circle>-->
+                                    <!--<circle class="circle-chart__circle" stroke="#4eb04b" stroke-width="2" stroke-dasharray="50,100" cx="15" cy="15" r="14"></circle>-->
+                                <!--</svg>-->
+                                <!--<b>{{collect.movie.score}}</b> </div>-->
+                            <!--&lt;!&ndash; end circle-rate &ndash;&gt;-->
+                            <!--<div class="hd" style="border: 0px;">  <a href="javascript:;" @click="del(collect.id)" style="color: white;text-decoration: none"><i class="layui-icon layui-icon-delete"></i></a></div>-->
+                            <!--&lt;!&ndash; end hd &ndash;&gt;-->
+                        <!--</figure>-->
+                        <!--<div class="video-content">-->
+                            <!--<small class="range">{{collect.movie.yeartime}}</small>-->
+                            <!--&lt;!&ndash;<ul class="tags">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<li>{{collect.movie.category.name}}</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div class="age">PG13</div>&ndash;&gt;-->
+                            <!--&lt;!&ndash; end age &ndash;&gt;-->
+                            <!--<h3 class="name"><a :href="['moviedetails.html?id='+collect.movie.id]">{{collect.movie.name}}</a></h3>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+
+
+        </div>
+        <!-- end container -->
+    </section>
+    <footer class="footer">
+        <!-- end container -->
+        <div class="bottom-bar" id="iframefoot">
+            <!-- end container -->
+        </div>
+        <!-- end bottom-bar -->
+    </footer>
+    <!-- end footer -->
+</main>
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+
+
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+
+<script type="text/javascript">
+    var qs = Qs
+    var pageNum = UrlParam.paramValues("pageNum")==null?1:UrlParam.paramValues("pageNum").toString()
+
+    var vmm = new Vue({
+        el:"#app",
+        data:{
+            // collectlist:[],
+            ddinfolist:[],
+            pageSize:10,
+            pageNum:pageNum,
+        },
+        mounted(){
+            this.getsessionmember()
+            this.getddinfolist()
+            layui.use('element', function(){
+                    var $ = layui.jquery
+                        ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            });
+        },
+        methods:{
+            getsessionmember(){
+                axios.post('checkmember',qs.stringify({
+                })).then(response =>{
+                    if(response.data.data==200){
+                        // this.getcollectlist()
+                        this.getddinfolist()
+                    }else{
+                        location.replace("login.html")
+                    }
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+
+            getddinfolist() {
+                axios.post('ddinfoList',qs.stringify({
+                    pageSize:this.pageSize
+                })).then(response =>{
+                    layui.use(['laypage', 'layer'], function(){
+                        var laypage = layui.laypage
+                            ,layer = layui.layer;
+                        //总页数大于页码总数
+                        laypage.render({
+                            elem: 'demo1'
+                            ,theme:"#2b303a"
+                            ,limit:vmm.pageSize
+                            ,curr:vmm.pageNum
+                            ,count: response.data.list.length //数据总数
+                            ,jump: function(obj,first){
+                                vmm.pageNum = obj.curr
+                                vmm.current_page(obj.curr,vmm.pageSize)
+                                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+                            }
+                        });
+                    });
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+
+            current_page(page,pageSize){
+                axios.post('ddinfoList',qs.stringify({
+                    pageNum:page,
+                    pageSize:pageSize,
+                })).then(response =>{
+                    this.ddinfolist = response.data.pageInfo.list
+                }).catch(error =>{
+                    console.log(error)
+                })
+            },
+
+            // delddinfo(id){
+            //     axios.post('ddinfoDel',qs.stringify({
+            //         id:id,
+            //     })).then(response =>{
+            //         this.getddinfolist()
+            //     }).catch(error =>{
+            //         console.log(error)
+            //     })
+            // },
+            // ddinfoadd(){
+            //     location.replace("ddinfoadd.html")
+            // },
+            // delcollect(id){
+            //     axios.post('collectDel',qs.stringify({
+            //         id:id,
+            //     })).then(response =>{
+            //         this.getddinfolist()
+            // }).catch(error =>{
+            //         console.log(error)
+            // })
+            // },
+
+
+        }
+    })
+    window.onload = function(){
+        $("#iframetop").load("top.html")
+        $("#iframefoot").load("foot.html")
+
+    }
+</script>
+</body>
+</html>
