@@ -3,7 +3,7 @@
 
 @Author: Themezinho
 @URL: http://www.themezinho.net
- 
+
 This file contains the styling for the actual theme, this
 is the file you need to edit to change the look of the
 theme.
@@ -24,7 +24,7 @@ theme.
 		11. MOBILE MENU
 		12. SEARCH BOX
 		13. NAVBAR
-		14. SLIDER 
+		14. SLIDER
 		15. PAGE HEADER
 		16. VIDEO PLAYER
 		17. MOVIE INFO BOX
@@ -55,7 +55,7 @@ theme.
 		42. RESPONSIVE TABLET FIXES
 		43. RESPONSIVE MOBILE FIXES
 
-	
+
 
 */
 /* GOOGLE FONTS */
@@ -1087,7 +1087,8 @@ button[type="submit"] i {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background: url("../images/page-header-bg.jpg") center no-repeat;
+  /*background: url("../images/page-header-bg.jpg") center no-repeat;*/
+  background: url("https://i.gtimg.cn/qqlive/img/jpgcache/files/qqvideo/hori/0/0t2c7989q6vo2a4.jpg") center no-repeat;
   background-size: cover !important;
   position: fixed;
   left: 0;
